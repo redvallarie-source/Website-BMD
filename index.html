@@ -3,209 +3,769 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Management - Tzu Chi University</title>
+    <title>Tzu Chi University | Business Management</title>
     
-    <!-- Mengambil Font dari Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Mengambil Ikon dari FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- ================= INTERNAL CSS ================= -->
+
     <style>
-        /* Variabel Warna dan Font Dasar */
         :root {
-            --primary: #154734; /* Hijau Tua Khas Tzu Chi */
-            --primary-hover: #1e5c45;
-            --text-dark: #1a1a1a;
-            --text-gray: #4a4a4a;
-            --bg-light: #f5f7f6;
+            --tc-green: #173e35;         /* Hijau Pinus Utama Tzu Chi */
+            --tc-green-dark: #102d26;    /* Hijau Gelap Tombol Hover */
+            --tc-green-card: #24493e;    /* Hijau Kotak Kutipan */
+            --tc-accent-bg: #dae5df;     /* Bingkai Pastel Belakang Foto */
+            --text-heading: #142a24;
+            --text-body: #4a5853;
+            --text-muted: #72827b;
+            --bg-page: #fcfdfc;
             --white: #ffffff;
-            --font-serif: 'Playfair Display', serif; /* Font untuk Judul */
-            --font-sans: 'Inter', sans-serif; /* Font untuk Teks Biasa */
-            --font-hand: 'Caveat', cursive; /* Font gaya tulisan tangan */
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-sans); color: var(--text-gray); background-color: var(--bg-light); line-height: 1.6; }
-        a { text-decoration: none; color: inherit; }
-        
-        /* 1. BAGIAN NAVBAR (MENU ATAS) */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%; background: var(--white); 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 100;
-        }
-        .logo { display: flex; align-items: center; gap: 15px; }
-        .logo-text { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--text-dark); display: flex; align-items: center; gap: 15px;}
-        .logo-text span { font-family: var(--font-sans); font-size: 1rem; font-weight: 400; border-left: 1px solid #ccc; padding-left: 15px; }
-        
-        .nav-links { display: flex; gap: 30px; list-style: none; font-size: 0.95rem; font-weight: 500; color: var(--text-dark); }
-        .nav-links li a:hover { color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 5px;}
-        .nav-actions { display: flex; align-items: center; gap: 20px; }
-        .lang-btn { background: var(--primary); color: var(--white); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; }
-
-        /* 2. BAGIAN HERO (GAMBAR BESAR & JUDUL UTAMA) */
-        .hero {
-            height: 85vh; min-height: 600px;
-            /* Foto Background dari Unsplash */
-            background: linear-gradient(to right, rgba(245,247,246,0.95) 0%, rgba(245,247,246,0.7) 45%, rgba(245,247,246,0.1) 100%),
-                        url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-            position: relative; padding: 100px 5%; display: flex; align-items: center;
-        }
-        .hero-content { max-width: 600px; position: relative; z-index: 2; }
-        .hero-subtitle { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;}
-        .hero-subtitle::after { content: ''; width: 60px; height: 1px; background: var(--text-gray); }
-        .hero h1 { font-family: var(--font-serif); font-size: 4rem; color: var(--primary); line-height: 1.1; margin-bottom: 20px; }
-        .hero p { font-size: 1.1rem; margin-bottom: 30px; color: var(--text-dark); }
-        
-        .btn-group { display: flex; gap: 20px; }
-        .btn-primary { background: var(--primary); color: var(--white); padding: 12px 25px; border-radius: 30px; font-weight: 500; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px;}
-        .btn-primary:hover { background: var(--primary-hover); }
-        .btn-outline { border: 1px solid var(--primary); color: var(--primary); padding: 12px 25px; border-radius: 30px; font-weight: 500; transition: 0.3s; }
-        .btn-outline:hover { background: var(--primary); color: var(--white); }
-        
-        /* Teks Tulisan Tangan Kanan Atas */
-        .handwriting {
-            position: absolute; top: 80px; right: 10%;
-            font-family: var(--font-hand); font-size: 2.8rem; color: var(--white);
-            transform: rotate(-10deg); text-align: right; line-height: 1.1;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-ui: 'Inter', -apple-system, sans-serif;
+            --font-script: 'Caveat', cursive;
         }
 
-        /* 3. KOTAK FITUR MELAYANG (COMPASSION, QUALITY, DLL) */
-        .features {
-            background: var(--white); max-width: 1100px; margin: -60px auto 50px;
-            border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-            display: grid; grid-template-columns: repeat(4, 1fr); padding: 40px 20px;
-            position: relative; z-index: 10;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .feature-item { text-align: center; border-right: 1px solid #eaeaea; padding: 0 20px; }
-        .feature-item:last-child { border-right: none; }
-        .feature-item i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
-        .feature-item h3 { font-family: var(--font-serif); font-size: 1.2rem; color: var(--primary); margin-bottom: 8px; }
-        .feature-item p { font-size: 0.9rem; }
 
-        /* 4. BAGIAN ABOUT (KIRI TEKS, KANAN GAMBAR) */
+        body {
+            font-family: var(--font-ui);
+            color: var(--text-body);
+            background-color: var(--bg-page);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s ease;
+        }
+
+        /* ================= 1. NAVBAR ================= */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 5%;
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo-svg {
+            width: 38px;
+            height: 38px;
+            color: var(--tc-green);
+        }
+
+        .brand-text {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--tc-green);
+            letter-spacing: 0.2px;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-divider {
+            margin: 0 14px;
+            color: #b5c4bd;
+            font-weight: 300;
+            font-size: 1.2rem;
+        }
+
+        .brand-sub {
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #2d3e37;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 26px;
+        }
+
+        .nav-item {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #3b4b45;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--tc-green);
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--tc-green);
+            border-radius: 2px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .search-icon-btn {
+            background: none;
+            border: none;
+            color: #3b4b45;
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .search-icon-btn:hover {
+            color: var(--tc-green);
+        }
+
+        .lang-pill-btn {
+            background-color: var(--tc-green);
+            color: var(--white);
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: background-color 0.25s ease, transform 0.15s ease;
+        }
+
+        .lang-pill-btn:hover {
+            background-color: var(--tc-green-dark);
+            transform: translateY(-1px);
+        }
+
+        /* ================= 2. HERO SECTION ================= */
+        .hero-banner {
+            position: relative;
+            min-height: 580px;
+            background: 
+                /* Efek gradien halus di sisi kiri agar teks terbaca sangat jelas */
+                linear-gradient(to right, rgba(252,253,252, 0.96) 0%, rgba(252,253,252, 0.88) 38%, rgba(252,253,252, 0.2) 65%, rgba(252,253,252, 0) 100%),
+                /* Foto kampus berarsitektur megah dengan latar pegunungan & langit */
+                url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=85') center right / cover no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 70px 5% 100px;
+        }
+
+        /* Daun dekoratif pojok kiri atas */
+        .hero-leaf-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 240px;
+            pointer-events: none;
+            opacity: 0.25;
+            background: radial-gradient(circle at 10% 10%, #2f6b55 0%, transparent 70%);
+        }
+
+        .hero-content {
+            max-width: 580px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-pretitle {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2.2px;
+            color: var(--tc-green);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .hero-pretitle::after {
+            content: '';
+            display: inline-block;
+            width: 45px;
+            height: 1.5px;
+            background-color: #9cb1a7;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 4.2rem;
+            line-height: 1.05;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-tagline {
+            font-size: 1.12rem;
+            font-weight: 500;
+            color: #22372f;
+            margin-bottom: 18px;
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            color: var(--text-body);
+            line-height: 1.7;
+            margin-bottom: 34px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-pill-primary {
+            background-color: var(--tc-green);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 14px rgba(23, 62, 53, 0.2);
+        }
+
+        .btn-pill-primary:hover {
+            background-color: var(--tc-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(23, 62, 53, 0.28);
+        }
+
+        .btn-pill-secondary {
+            background-color: rgba(255, 255, 255, 0.85);
+            color: var(--tc-green);
+            padding: 12px 28px;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            border: 1px solid #b7c7be;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-pill-secondary:hover {
+            background-color: var(--white);
+            border-color: var(--tc-green);
+            transform: translateY(-2px);
+        }
+
+        /* Tulisan Tangan "Good People Good Business A Better World" */
+        .hero-handwritten {
+            position: absolute;
+            top: 60px;
+            right: 6%;
+            font-family: var(--font-script);
+            color: var(--white);
+            font-size: 2.6rem;
+            line-height: 1.15;
+            text-align: right;
+            transform: rotate(-7deg);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        .hero-handwritten span {
+            display: block;
+        }
+
+        .hero-handwritten-underline {
+            width: 140px;
+            height: 3px;
+            background: rgba(255,255,255,0.85);
+            margin-left: auto;
+            margin-top: 4px;
+            border-radius: 4px;
+            transform: rotate(-2deg);
+        }
+
+        /* Plang Vertikal Kanji Kampus di Bangunan */
+        .campus-vertical-plaque {
+            position: absolute;
+            right: 17%;
+            top: 36%;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 12px 10px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #d4ded8;
+            pointer-events: none;
+        }
+
+        .campus-vertical-plaque .plaque-logo {
+            font-size: 0.75rem;
+            color: var(--tc-green);
+            margin-bottom: 6px;
+        }
+
+        .campus-vertical-plaque span {
+            display: block;
+            writing-mode: vertical-rl;
+            letter-spacing: 7px;
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--tc-green);
+        }
+
+        /* Indikator Slider Titik di Pojok Kanan Bawah Hero */
+        .hero-slider-dots {
+            position: absolute;
+            bottom: 30px;
+            right: 5%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 6;
+        }
+
+        .slider-bar {
+            width: 22px;
+            height: 3.5px;
+            background-color: var(--white);
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .slider-dot {
+            width: 6px;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* ================= 3. FLOATING INFO BAR ================= */
+        .floating-container {
+            max-width: 1180px;
+            margin: -50px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .floating-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 18px 45px -10px rgba(18, 48, 39, 0.08);
+            border: 1px solid rgba(220, 230, 224, 0.8);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 34px 15px;
+        }
+
+        .floating-col {
+            text-align: center;
+            padding: 0 22px;
+            position: relative;
+        }
+
+        .floating-col:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background-color: #e8eee9;
+        }
+
+        .floating-col-icon {
+            font-size: 1.7rem;
+            color: var(--tc-green);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .floating-col-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--tc-green);
+            margin-bottom: 6px;
+        }
+
+        .floating-col-desc {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        /* ================= 4. ABOUT SECTION ================= */
         .about-section {
-            padding: 80px 5% 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-            max-width: 1300px; margin: 0 auto; align-items: center;
+            padding: 95px 5% 120px;
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.08fr;
+            gap: 70px;
+            align-items: center;
+            position: relative;
         }
-        .about-text h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; color: var(--text-gray); display: flex; align-items: center; gap: 10px;}
-        .about-text h4::after { content: ''; width: 40px; height: 1px; background: var(--text-gray); }
-        .about-text h2 { font-family: var(--font-serif); font-size: 2.8rem; color: var(--text-dark); margin-bottom: 30px; line-height: 1.2; }
-        .about-text p { margin-bottom: 20px; font-size: 1.05rem; }
-        .about-text .btn-outline { margin-top: 20px; display: inline-block; }
 
-        .about-image { position: relative; }
-        .about-image img { width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .quote-box {
-            position: absolute; bottom: -30px; right: -30px;
-            background: var(--primary); color: var(--white); padding: 40px;
-            border-radius: 10px; max-width: 320px; font-family: var(--font-sans); font-style: italic; font-weight: 300; line-height: 1.6; font-size: 1.1rem;
-            box-shadow: 0 15px 30px rgba(21,71,52,0.3);
+        .about-left-pretitle {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--tc-green);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
         }
-        .quote-box::after { content: ''; display: block; width: 40px; height: 1px; background: var(--white); margin-top: 20px; }
+
+        .about-left-pretitle::after {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 1.5px;
+            background-color: #9cb1a7;
+        }
+
+        .about-left-title {
+            font-family: var(--font-display);
+            font-size: 3.1rem;
+            line-height: 1.15;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 24px;
+        }
+
+        .about-left-paragraph {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--text-body);
+            margin-bottom: 18px;
+        }
+
+        .btn-outline-rounded {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 26px;
+            border-radius: 999px;
+            border: 1.5px solid var(--tc-green);
+            color: var(--tc-green);
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-top: 14px;
+        }
+
+        .btn-outline-rounded:hover {
+            background-color: var(--tc-green);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Frame Foto & Kotak Kutipan Kanan */
+        .about-visual-wrap {
+            position: relative;
+            padding-right: 15px;
+            padding-bottom: 25px;
+        }
+
+        /* Bingkai Sage Green Melengkung di Belakang Foto */
+        .about-accent-frame {
+            position: absolute;
+            top: -16px;
+            left: -16px;
+            width: 90%;
+            height: 94%;
+            background-color: var(--tc-accent-bg);
+            border-radius: 22px;
+            z-index: 1;
+        }
+
+        .about-main-photo {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(20, 48, 38, 0.12);
+            display: block;
+        }
+
+        /* Kotak Kutipan Hijau Tua Menumpuk di Pojok Kanan Bawah */
+        .about-quote-card {
+            position: absolute;
+            bottom: -15px;
+            right: 0px;
+            z-index: 3;
+            background-color: var(--tc-green-card);
+            color: var(--white);
+            padding: 30px 28px;
+            border-radius: 16px;
+            max-width: 310px;
+            box-shadow: 0 20px 40px rgba(16, 45, 36, 0.28);
+        }
+
+        .about-quote-text {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            font-style: italic;
+            font-weight: 300;
+            color: #f0f6f3;
+            margin-bottom: 18px;
+        }
+
+        .about-quote-line {
+            width: 34px;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 2px;
+        }
+
+        /* Ilustrasi Garis Daun Tipis di Sudut Bawah */
+        .bg-botanical-leaf {
+            position: absolute;
+            bottom: -50px;
+            right: -45px;
+            width: 140px;
+            height: 140px;
+            opacity: 0.22;
+            pointer-events: none;
+            z-index: 0;
+            color: var(--tc-green);
+        }
+
+        /* ================= RESPONSIVE SETTINGS ================= */
+        @media (max-width: 992px) {
+            .navbar { padding: 15px 4%; }
+            .nav-menu { display: none; } /* Mobile toggle bisa ditambahkan */
+            .hero-banner { min-height: 520px; padding: 60px 4% 80px; }
+            .hero-title { font-size: 3.2rem; }
+            .hero-handwritten { display: none; }
+            .floating-card { grid-template-columns: repeat(2, 1fr); gap: 25px; padding: 25px; }
+            .floating-col:not(:last-child)::after { display: none; }
+            .about-section { grid-template-columns: 1fr; gap: 50px; }
+            .about-quote-card { position: relative; bottom: 0; right: 0; margin-top: -30px; margin-left: auto; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <div class="logo">
-            <!-- Icon Daun sebagai pengganti logo Tzu Chi -->
-            <i class="fa-solid fa-leaf" style="color: var(--primary); font-size: 28px;"></i>
-            <div class="logo-text">Tzu Chi University <span>Business Management</span></div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">Introduction</a></li>
-            <li><a href="#">Faculty</a></li>
-            <li><a href="#">Regulation</a></li>
-            <li><a href="#">What We Learn</a></li>
-        </ul>
-        <div class="nav-actions">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <a href="#" class="lang-btn">中文</a>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <div class="handwriting">
-            Good People<br>Good Business<br>A Better World
-        </div>
-        <div class="hero-content">
-            <div class="hero-subtitle">Tzu Chi University</div>
-            <h1>Business Management</h1>
-            <p>Cultivating compassionate leaders for a sustainable future.<br><br>
-            The Department of Business Management at Tzu Chi University nurtures students with professional knowledge, ethical values, and a global perspective — empowering them to create a positive impact in society and the world.</p>
-            <div class="btn-group">
-                <a href="#about" class="btn-primary">Explore Our Program <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="#about" class="btn-outline">About Us</a>
+    <header>
+        <nav class="navbar">
+            <div class="brand-container">
+                <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3c-1.5 3-4 5.5-4 9a4 4 0 0 0 8 0c0-3.5-2.5-6-4-9z"/>
+                    <path d="M7 10c-2.5 1-4.5 3-5 6 3 .5 5.5-.5 7-2"/>
+                    <path d="M17 10c2.5 1 4.5 3 5 6-3 .5-5.5-.5-7-2"/>
+                    <path d="M9 18c-1.5 2-3 3-5 3 1.5-2 2-3.5 2-5"/>
+                    <path d="M15 18c1.5 2 3 3 5 3-1.5-2-2-3.5-2-5"/>
+                </svg>
+                <div class="brand-text">
+                    Tzu Chi University
+                    <span class="brand-divider">|</span>
+                    <span class="brand-sub">Business Management</span>
+                </div>
             </div>
-        </div>
+
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-item active">Home</a></li>
+                <li><a href="#about" class="nav-item">About</a></li>
+                <li><a href="#" class="nav-item">Academics</a></li>
+                <li><a href="#" class="nav-item">Faculty</a></li>
+                <li><a href="#" class="nav-item">Students</a></li>
+                <li><a href="#" class="nav-item">News & Events</a></li>
+                <li><a href="#" class="nav-item">Contact</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <button class="search-icon-btn" aria-label="Search" title="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="lang-pill-btn" onclick="toggleLanguage()">中文</button>
+            </div>
+        </nav>
     </header>
 
-    <!-- FLOATING INFO CARDS -->
-    <section class="features">
-        <div class="feature-item">
-            <i class="fa-solid fa-seedling"></i>
-            <h3>Compassion & Integrity</h3>
-            <p>Build character, lead with heart.</p>
-        </div>
-        <div class="feature-item">
-            <i class="fa-solid fa-book-open"></i>
-            <h3>Quality Education</h3>
-            <p>Bridging theory and practice.</p>
-        </div>
-        <div class="feature-item">
-            <i class="fa-solid fa-globe"></i>
-            <h3>Global Vision</h3>
-            <p>Think globally, act locally.</p>
-        </div>
-        <div class="feature-item">
-            <i class="fa-solid fa-users"></i>
-            <h3>Social Impact</h3>
-            <p>Business for a kinder world.</p>
-        </div>
-    </section>
+    <section class="hero-banner">
+        <div class="hero-leaf-overlay"></div>
 
-    <!-- ABOUT SECTION -->
-    <section class="about-section" id="about">
-        <div class="about-text">
-            <h4>About Our Department</h4>
-            <h2>Learn · Grow · Make an Impact</h2>
-            <p>At Tzu Chi University's Business Management Department, we emphasise holistic education that combines academic excellence with compassion, sustainability, and real-world experience.</p>
-            <p>Our goal is to develop future business leaders who care — for people, for society, and for the environment.</p>
-            <a href="#" class="btn-outline">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="hero-handwritten">
+            <span>Good People</span>
+            <span>Good Business</span>
+            <span>A Better World</span>
+            <div class="hero-handwritten-underline"></div>
         </div>
-        <div class="about-image">
-            <!-- Foto Mahasiswa dari Unsplash -->
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Students studying together on grass">
-            <div class="quote-box">
-                "Business is not just about profit, but about creating a better future for all."
+
+        <div class="campus-vertical-plaque">
+            <div class="plaque-logo"><i class="fa-solid fa-spa"></i></div>
+            <span>慈濟大學</span>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-pretitle">Tzu Chi University</div>
+            <h1 class="hero-title">Business Management</h1>
+            <div class="hero-tagline">Cultivating compassionate leaders for a sustainable future.</div>
+            <p class="hero-description">
+                The Department of Business Management at Tzu Chi University nurtures students with professional knowledge, ethical values, and a global perspective — empowering them to create a positive impact in society and the world.
+            </p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn-pill-primary">
+                    Explore Our Program <i class="fa-solid fa-arrow-right" style="font-size: 0.8rem;"></i>
+                </a>
+                <a href="#about" class="btn-pill-secondary">About Us</a>
             </div>
         </div>
+
+        <div class="hero-slider-dots">
+            <div class="slider-bar"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
     </section>
 
-    <!-- ================= INTERNAL JAVASCRIPT ================= -->
+    <div class="floating-container">
+        <div class="floating-card">
+            <div class="floating-col">
+                <div class="floating-col-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <div class="floating-col-title">Compassion & Integrity</div>
+                <div class="floating-col-desc">Build character, lead with heart.</div>
+            </div>
+
+            <div class="floating-col">
+                <div class="floating-col-icon">
+                    <i class="fa-regular fa-bookmark"></i>
+                </div>
+                <div class="floating-col-title">Quality Education</div>
+                <div class="floating-col-desc">Bridging theory and practice.</div>
+            </div>
+
+            <div class="floating-col">
+                <div class="floating-col-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="floating-col-title">Global Vision</div>
+                <div class="floating-col-desc">Think globally, act locally.</div>
+            </div>
+
+            <div class="floating-col">
+                <div class="floating-col-icon">
+                    <i class="fa-solid fa-people-roof"></i>
+                </div>
+                <div class="floating-col-title">Social Impact</div>
+                <div class="floating-col-desc">Business for a kinder world.</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="about-section" id="about">
+        <div class="about-left-col">
+            <div class="about-left-pretitle">About Our Department</div>
+            <h2 class="about-left-title">Learn · Grow · Make an Impact</h2>
+            <p class="about-left-paragraph">
+                At Tzu Chi University's Business Management Department, we emphasise holistic education that combines academic excellence with compassion, sustainability, and real-world experience.
+            </p>
+            <p class="about-left-paragraph">
+                Our goal is to develop future business leaders who care — for people, for society, and for the environment.
+            </p>
+            <a href="#" class="btn-outline-rounded">
+                Learn More <i class="fa-solid fa-arrow-right" style="font-size: 0.78rem;"></i>
+            </a>
+        </div>
+
+        <div class="about-visual-wrap">
+            <div class="about-accent-frame"></div>
+            
+            <img class="about-main-photo" 
+                 src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Students studying together on campus grass">
+
+            <div class="about-quote-card">
+                <div class="about-quote-text">
+                    “Business is not just about profit, but about creating a better future for all.”
+                </div>
+                <div class="about-quote-line"></div>
+            </div>
+
+            <svg class="bg-botanical-leaf" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M10 90 Q 50 10 90 10 Q 90 50 10 90 Z"/>
+                <path d="M10 90 L 90 10"/>
+                <path d="M40 60 Q 60 50 70 30"/>
+                <path d="M30 70 Q 40 75 55 80"/>
+            </svg>
+        </div>
+    </section>
+
     <script>
-        // Memenuhi syarat "ada JavaScript" dari guru
-        // Fungsi JS ini akan membuat navbar sedikit mengecil & bayangannya lebih tebal saat di-scroll
+        // 1. Efek Navbar Shadow saat Scroll
         window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-                nav.style.padding = '15px 5%';
-                nav.style.transition = 'all 0.3s ease';
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 40) {
+                navbar.style.boxShadow = '0 6px 20px rgba(18, 48, 39, 0.08)';
+                navbar.style.padding = '12px 5%';
             } else {
-                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
-                nav.style.padding = '20px 5%';
+                navbar.style.boxShadow = '0 1px 0 rgba(0, 0, 0, 0.06)';
+                navbar.style.padding = '16px 5%';
             }
+        });
+
+        // 2. Fungsi Pengganti Bahasa Ringan
+        function toggleLanguage() {
+            const btn = document.querySelector('.lang-pill-btn');
+            if (btn.innerText === '中文') {
+                btn.innerText = 'EN';
+                alert('Tampilan bahasa berhasil diubah ke Mandarin (Demo).');
+            } else {
+                btn.innerText = '中文';
+                alert('Language switched to English (Demo).');
+            }
+        }
+
+        // 3. Efek Interaktif Tombol Titik Slider
+        const dots = document.querySelectorAll('.slider-dot');
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.style.backgroundColor = 'rgba(255, 255, 255, 0.6)');
+                dot.style.backgroundColor = '#ffffff';
+            });
         });
     </script>
 </body>
