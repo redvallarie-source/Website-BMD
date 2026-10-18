@@ -1,0 +1,206 @@
+(() => {
+    const translations = {
+        'Home': '首頁',
+        'About': '關於我們',
+        'Department Introduction': '系所介紹',
+        'Mission & Vision': '使命與願景',
+        'Department History': '系所沿革',
+        'FB Forum': 'FB 論壇',
+        'Social Media': '社群媒體',
+        'Academics': '學術課程',
+        'Curriculum': '課程規劃',
+        'Graduation Requirements': '畢業要求',
+        'Learning Resources': '學習資源',
+        'Academic Regulations & Forms': '學術規章與表格',
+        'Faculty': '師資陣容',
+        'Student Life': '學生生活',
+        'Student Activities': '學生社團活動',
+        'Student Experiences': '學生經驗分享',
+        'Clubs & Organizations': '社團與組織',
+        'Internship Opportunities': '實習機會',
+        'Career Paths': '職涯發展',
+        'Alumni Stories': '校友故事',
+        'News & Events': '最新消息與活動',
+        'Latest News': '最新消息',
+        'Upcoming Events': '近期活動',
+        'Department Announcements': '系所公告',
+        'Student Achievements': '學生傑出表現',
+        'More': '更多',
+        'Contact Us': '聯絡我們',
+        'Tzu Chi University Main Website': '慈濟大學官方網站',
+        'Useful Links': '相關連結',
+        'Search': '搜尋',
+        'Mission': '使命',
+        'Department of': '企業管理',
+        'Vision & Mission': '願景與使命',
+        'Students studying together on campus grass': '在校園草地上一起學習的學生',
+        'Students gathering on campus': '在校園聚會的學生',
+        'Tzu Chi University': '慈濟大學',
+        'Business Management': '企業管理學系',
+        'Good People': '良善的人',
+        'Good Business': '良善的企業',
+        'A Better World': '更美好的世界',
+        'Cultivating compassionate leaders for a sustainable future.': '培育具有慈悲精神、共創永續未來的領導人才。',
+        'The Department of Business Management at Tzu Chi University nurtures students with professional knowledge, ethical values, and a global perspective — empowering them to create a positive impact in society and the world.': '慈濟大學企業管理學系培養學生具備專業知識、倫理價值與全球視野，讓學生有能力為社會及世界帶來正向影響。',
+        'Explore Our Program': '探索我們的課程',
+        'About Us': '認識我們',
+        'Compassion & Integrity': '慈悲與誠信',
+        'Build character, lead with heart.': '培養品格，以真誠之心領導。',
+        'Quality Education': '優質教育',
+        'Bridging theory and practice.': '連結理論與實務。',
+        'Global Vision': '全球視野',
+        'Think globally, act locally.': '放眼全球，立足在地。',
+        'Social Impact': '社會影響力',
+        'Business for a kinder world.': '以商業實踐共創友善世界。',
+        'About Our Department': '關於我們的系所',
+        'Learn · Grow · Make an Impact': '學習 · 成長 · 創造影響',
+        "At Tzu Chi University's Business Management Department, we emphasise holistic education that combines academic excellence with compassion, sustainability, and real-world experience.": '慈濟大學企業管理學系重視全人教育，融合學術卓越、慈悲關懷、永續理念與實務經驗。',
+        'Our goal is to develop future business leaders who care — for people, for society, and for the environment.': '我們致力培育關懷人群、社會與環境的未來企業領導人才。',
+        'Learn More': '了解更多',
+        '“Business is not just about profit, but about creating a better future for all.”': '「企業不只是追求利潤，更要為所有人創造更美好的未來。」',
+        'ABOUT': '關於我們',
+        'Cultivating ethical leaders for a better world': '培育具有倫理素養的領導人才，共創美好世界',
+        'The Department of Business Management at Tzu Chi University combines solid academic foundation with humanistic values, preparing students to become innovative, responsible, and compassionate professionals in a global society.': '慈濟大學企業管理學系結合扎實的學術基礎與人文價值，培養學生在全球社會中成為創新、負責且富有慈悲心的專業人才。',
+        'INTRODUCTION': '系所介紹',
+        'More Than Business.': '不只是企業管理。',
+        'A Better Tomorrow.': '更美好的明天。',
+        'The Department of Business Management focuses on cultivating students with professional knowledge, humanistic values and a global perspective. We aim to develop well-rounded individuals who can create positive social impact through innovative thinking, digital skills, and a commitment to sustainability.': '企業管理學系致力培養學生具備專業知識、人文價值與全球視野。我們期望培育全方位人才，透過創新思維、數位技能與永續承諾，為社會帶來正向影響。',
+        'Solid Academic': '扎實的學術',
+        'Foundation': '基礎',
+        'Innovative': '創新',
+        'Thinking': '思維',
+        'Global': '全球',
+        'Perspective': '視野',
+        'Social': '社會',
+        'Responsibility': '責任',
+        'WHY CHOOSE US': '為什麼選擇我們',
+        'Your Growth,': '你的成長，',
+        'Our Commitment': '我們的承諾',
+        'We provide a supportive learning environment, experienced faculty, and diverse opportunities to help you grow academically, professionally, and personally.': '我們提供完善的學習環境、經驗豐富的師資與多元機會，協助你在學業、職涯與個人成長上持續進步。',
+        'Learning today,': '今日學習，',
+        'leading tomorrow.': '引領明日。',
+        'Interdisciplinary': '跨領域',
+        'Curriculum': '課程規劃',
+        'Integrating management, finance, marketing, information systems and more.': '整合管理、財務、行銷、資訊系統等多元領域。',
+        'International': '國際',
+        'Exposure': '交流',
+        'Exchange programs, overseas internships and global partnerships.': '交換計畫、海外實習與全球合作夥伴關係。',
+        'Practical Learning': '實務學習',
+        'Case studies, industry projects, company visits and hands-on experience.': '透過個案研究、產業專案、企業參訪與實作累積經驗。',
+        'Humanistic Values': '人文價值',
+        'Service learning and volunteer activities to make a positive impact on society.': '透過服務學習與志工活動，為社會帶來正向影響。',
+        'ACADEMIC PROGRAMS': '學術課程',
+        'Four Core Learning Fields': '四大核心學習領域',
+        'We offer a comprehensive curriculum that combines theory with practice, helping students build the skills and knowledge needed for a dynamic future.': '我們提供結合理論與實務的完整課程，協助學生建立迎向多變未來所需的技能與知識。',
+        'View All Programs': '查看所有課程',
+        'Operations Management': '作業管理',
+        'Improve efficiency and create value through effective operations.': '透過有效的營運提升效率並創造價值。',
+        'View Courses': '查看課程',
+        'Marketing Management': '行銷管理',
+        'Understand consumers and build strong brand strategies.': '了解消費者並建立具競爭力的品牌策略。',
+        'Business Intelligence &': '商業智慧與',
+        'Information Management': '資訊管理',
+        'Turn data into insights for smarter decision-making.': '將數據轉化為洞見，做出更明智的決策。',
+        'Financial Management': '財務管理',
+        'Build financial skills for long-term success.': '培養財務能力，奠定長期成功的基礎。',
+        'JOIN US': '加入我們',
+        'Be Part of a Meaningful Journey': '加入一段充滿意義的旅程',
+        "At Tzu Chi University, we don't just teach business —": '在慈濟大學，我們不只傳授企業管理知識——',
+        'we nurture people who care, create, and make a difference.': '更培育懂得關懷、創造並帶來改變的人才。',
+        'Explore Our Programs': '探索我們的課程',
+        'Better Management': '更好的管理',
+        'A Kinder World': '更友善的世界',
+        'The purpose behind our progress': '我們持續前進的初心',
+        'Vision': '願景',
+        'Where we’re going.': '我們前進的方向。',
+        'How we’ll get there.': '我們實踐願景的方式。',
+        'Our vision · 願景': '我們的願景 · 願景',
+        'A better future.': '更美好的未來。',
+        'A broader perspective.': '更寬廣的視野。',
+        'Advance innovative, globally connected, and socially responsible business education.': '推動創新、連結全球並具社會責任的商業教育。',
+        'Innovation': '創新',
+        'Global connections': '全球連結',
+        'Responsibility': '責任',
+        'Rooted in care. Growing with purpose.': '以關懷為根，朝目標成長。',
+        'Our mission · 使命': '我們的使命 · 使命',
+        'Professional minds.': '專業的頭腦。',
+        'Compassionate hearts.': '慈悲的心。',
+        'Develop skilled business professionals with creativity, teamwork, cross-cultural understanding, and strong ethical values.': '培育具備創造力、團隊合作力、跨文化理解力與堅定倫理價值的商業專業人才。',
+        'Knowledge': '知識',
+        'Character': '品格',
+        'Collaboration': '合作',
+        'Concise adaptations of the department’s educational goals and future vision.': '本系教育目標與未來願景的精要改寫。',
+        'Official source ↗': '官方資料來源 ↗'
+    };
+
+    const originalTextNodes = [];
+    const originalAttributes = [];
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+            return node.parentElement.closest('script, style') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+        }
+    });
+
+    while (walker.nextNode()) {
+        const node = walker.currentNode;
+        if (node.nodeValue.trim()) {
+            originalTextNodes.push({ node, original: node.nodeValue });
+        }
+    }
+
+    document.querySelectorAll('[alt], [aria-label], [title]').forEach(element => {
+        ['alt', 'aria-label', 'title'].forEach(attribute => {
+            const original = element.getAttribute(attribute);
+            if (original && translations[original]) {
+                originalAttributes.push({ element, attribute, original });
+            }
+        });
+    });
+
+    const titleInEnglish = document.title;
+    const titleInChinese = {
+        'Tzu Chi University | Business Management': '慈濟大學｜企業管理學系',
+        'About - Department of Business Management | Tzu Chi University': '關於我們－企業管理學系｜慈濟大學',
+        'Vision & Mission · TCU Business Management': '願景與使命 · 慈濟大學企業管理學系'
+    }[titleInEnglish];
+    const languageButton = document.querySelector('.lang-pill-btn');
+
+    function applyLanguage(language) {
+        const isChinese = language === 'zh-Hant';
+        originalTextNodes.forEach(({ node, original }) => {
+            const trimmed = original.trim();
+            const isDepartmentTitle = titleInEnglish.startsWith('About -')
+                && node.parentElement.closest('.hero-title')
+                && trimmed === 'Business Management';
+            const translated = isChinese
+                ? (isDepartmentTitle ? '學系' : translations[trimmed])
+                : null;
+            const leadingWhitespace = original.match(/^\s*/)[0];
+            const trailingWhitespace = original.match(/\s*$/)[0];
+            node.nodeValue = translated
+                ? `${leadingWhitespace}${translated}${trailingWhitespace}`
+                : original;
+        });
+        originalAttributes.forEach(({ element, attribute, original }) => {
+            element.setAttribute(attribute, isChinese ? translations[original] : original);
+        });
+
+        document.documentElement.lang = language;
+        if (isChinese && titleInChinese) {
+            document.title = titleInChinese;
+        } else {
+            document.title = titleInEnglish;
+        }
+        languageButton.textContent = isChinese ? 'EN' : '中文';
+        languageButton.setAttribute('aria-label', isChinese ? 'Switch to English' : '切換為中文');
+        languageButton.title = isChinese ? 'Switch to English' : '切換為中文';
+    }
+
+    window.toggleLanguage = function() {
+        const nextLanguage = document.documentElement.lang === 'zh-Hant' ? 'en' : 'zh-Hant';
+        localStorage.setItem('website-language', nextLanguage);
+        applyLanguage(nextLanguage);
+    };
+
+    applyLanguage(localStorage.getItem('website-language') || 'en');
+})();
