@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vision & Mission · TCU Business Management</title>
+<meta name="description" content="Our vision and mission: innovative, globally connected, and socially responsible business education grounded in professional skills and humanistic values.">
+
+<!-- Google Fonts & Font Awesome khusus untuk Navbar agar 100% sama dengan halaman lain -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+  --ink:#234d3d;
+  --text:#596e60;
+  --paper:#fbfaf5;
+  --sage:#ecf0e5;
+  --line:#dbe2d2;
+  --gold:#be9b60;
+
+  /* Variabel khusus Navbar */
+  --tc-green: #173e35;
+  --tc-green-dark: #102d26;
+  --white: #ffffff;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-ui: 'Inter', -apple-system, sans-serif;
+}
+* {
+  box-sizing:border-box
+}
+body {
+  margin:0;
+  color:var(--ink);
+  background:var(--paper);
+  font:14px/1.7 'Segoe UI',Arial,sans-serif
+}
+a {
+  color:inherit;
+  text-decoration:none
+}
+a:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:6px
+}
+
+/* ================= CSS NAVBAR (SAMA PERSIS DENGAN HOME & INTRO) ================= */
+.navbar {
+  font-family: var(--font-ui);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 5%;
+  background-color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+.brand-container { display: flex; align-items: center; gap: 12px; }
+.brand-logo-svg { width: 38px; height: 38px; color: var(--tc-green); }
+.brand-text { font-family: var(--font-display); font-size: 1.45rem; font-weight: 700; color: var(--tc-green); display: flex; align-items: center; line-height: 1.2; }
+.brand-divider { margin: 0 14px; color: #b5c4bd; font-weight: 300; font-size: 1.2rem; }
+.brand-sub { font-family: var(--font-ui); font-size: 0.95rem; font-weight: 500; color: #2d3e37; }
+
+.nav-menu { display: flex; align-items: center; list-style: none; margin: 0; padding: 0; gap: 22px; }
+.nav-item { font-size: 0.88rem; font-weight: 500; color: #3b4b45; position: relative; padding: 8px 0; display: flex; align-items: center; gap: 5px; transition: all 0.25s ease; }
+.nav-item i { font-size: 0.65rem; color: #72827b; transition: transform 0.3s ease; }
+.nav-item:hover, .nav-item.active { color: var(--tc-green); }
+.nav-item:hover i, .nav-item.active i { color: var(--tc-green); }
+.nav-item.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--tc-green); border-radius: 2px; }
+
+.nav-right { display: flex; align-items: center; gap: 18px; }
+.search-icon-btn { background: none; border: none; color: #3b4b45; font-size: 0.95rem; cursor: pointer; padding: 6px; transition: color 0.2s ease; }
+.search-icon-btn:hover { color: var(--tc-green); }
+.lang-pill-btn { font-family: var(--font-ui); background-color: var(--tc-green); color: var(--white); font-size: 0.82rem; font-weight: 500; padding: 6px 16px; border-radius: 999px; border: none; cursor: pointer; letter-spacing: 0.5px; transition: all 0.25s ease; }
+.lang-pill-btn:hover { background-color: var(--tc-green-dark); transform: translateY(-1px); }
+
+.dropdown { position: relative; list-style: none; }
+.dropdown-menu { position: absolute; top: 130%; left: 0; background-color: var(--white); box-shadow: 0 15px 35px rgba(18, 48, 39, 0.08); border-radius: 12px; min-width: 240px; padding: 12px 0; margin: 0; list-style: none; opacity: 0; visibility: hidden; transform: translateY(15px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1000; border: 1px solid rgba(220, 230, 224, 0.5); }
+.dropdown::after { content: ''; position: absolute; top: 100%; left: 0; width: 100%; height: 30px; }
+.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); top: 100%; }
+.dropdown:hover .nav-item i { transform: rotate(180deg); }
+.dropdown-menu li { list-style: none; }
+.dropdown-menu li a { display: block; padding: 10px 24px; font-size: 0.88rem; font-weight: 500; color: #4a5853; transition: all 0.25s ease; }
+.dropdown-menu li a:hover, .dropdown-menu li a.active-sub { color: var(--tc-green); background-color: #f5f8f6; }
+.dropdown-menu li a:hover { padding-left: 32px; }
+.nav-menu > li:last-child .dropdown-menu { left: auto; right: -20px; }
+
+/* ================= CSS ASLI VISION & MISSION (TIDAK DIUBAH SAMA SEKALI) ================= */
+.wrap {
+  width:min(1160px,90%);
+  margin:auto
+}
+.breadcrumb {
+  font-size:10px;
+  color:#819078;
+  margin-top:22px
+}
+.breadcrumb span {
+  padding:0 10px;
+  color:#aab79f
+}
+.heading {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:25px;
+  padding:20px 0 27px
+}
+.eyebrow {
+  text-transform:uppercase;
+  font-size:9px;
+  letter-spacing:2px;
+  color:#7e916f;
+  display:flex;
+  align-items:center;
+  gap:8px
+}
+.eyebrow:before {
+  content:'';
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--gold)
+}
+h1 {
+  font:clamp(39px,4.6vw,57px)/1.1 Georgia,serif;
+  letter-spacing:-1.8px;
+  margin:9px 0 0;
+  font-weight:normal
+}
+h1 em {
+  font-weight:normal;
+  color:#8c9c79
+}
+.heading>p {
+  font-size:12px;
+  color:var(--text);
+  margin:0 0 3px
+}
+.canvas {
+  position:relative;
+  isolation:isolate;
+  background:var(--sage);
+  border:1px solid #e0e6d8;
+  border-radius:28px;
+  min-height:330px;
+  display:grid;
+  grid-template-columns:1fr .9fr 1fr;
+  align-items:center;
+  padding:40px 42px;
+  overflow:hidden;
+  gap:10px
+}
+.canvas:before {
+  content:'';
+  position:absolute;
+  z-index:-1;
+  width:650px;
+  height:650px;
+  border:1px solid #dce3d3;
+  border-radius:50%;
+  left:calc(50% - 325px);
+  top:calc(50% - 325px)
+}
+.canvas:after {
+  content:'';
+  position:absolute;
+  z-index:-1;
+  width:780px;
+  height:780px;
+  border:1px solid #e0e6d8;
+  border-radius:50%;
+  left:calc(50% - 390px);
+  top:calc(50% - 390px)
+}
+.statement {
+  position:relative;
+  z-index:2;
+  max-width:300px
+}
+.mission {
+  justify-self:end
+}
+.label {
+  font-size:10px;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+.label .number {
+  font-size:9px;
+  border:1px solid #c5d0b9;
+  border-radius:50%;
+  width:26px;
+  height:26px;
+  display:grid;
+  place-items:center;
+  color:#879773
+}
+.statement h2 {
+  font:32px/1.16 Georgia,serif;
+  letter-spacing:-.7px;
+  margin:18px 0 14px;
+  font-weight:normal
+}
+.statement p {
+  font-size:13px;
+  line-height:1.85;
+  color:var(--text);
+  margin:0;
+  max-width:280px
+}
+.statement .keywords {
+  font-size:9px;
+  letter-spacing:.4px;
+  margin-top:21px;
+  color:#6a805d;
+  border-top:1px solid #ccd7bf;
+  padding-top:12px;
+  display:flex;
+  gap:6px;
+  align-items:center;
+  flex-wrap:wrap
+}
+.keywords i {
+  height:3px;
+  width:3px;
+  background:#adbb97;
+  border-radius:50%
+}
+.art {
+  width:100%;
+  min-width:0;
+  position:relative;
+  display:grid;
+  place-items:center
+}
+.art svg {
+  width:100%;
+  max-width:310px;
+  height:auto;
+  overflow:visible
+}
+.art .orbit {
+  transform-origin:160px 150px;
+  transition:transform .65s ease
+}
+.canvas:hover .orbit {
+  transform:rotate(7deg)
+}
+.art .bud {
+  transform-origin:160px 150px;
+  transition:transform .65s ease
+}
+.canvas:hover .bud {
+  transform:translateY(-3px)
+}
+.caption {
+  position:absolute;
+  bottom:1%;
+  font-size:8px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#83936f;
+  white-space:nowrap
+}
+.footer {
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  align-items:center;
+  padding:16px 2px 24px;
+  color:#8c987e;
+  font-size:9px
+}
+.footer p {
+  margin:0;
+  max-width:700px
+}
+.footer a {
+  white-space:nowrap;
+  border-bottom:1px solid #c6cfb9;
+  padding-bottom:2px
+}
+.mark {
+  font-size:11px;
+  color:#a3b18d;
+  position:absolute;
+  top:18px;
+  right:24px
+}
+.source-detail {
+  font-size:9px;
+  color:#9ba58f
+}
+.canvas a {
+  position:absolute;
+  inset:0;
+  z-index:-1
+}
+@media(min-width:1400px) {
+  .wrap {
+    width:min(1180px,86%)
+  }
+  .canvas {
+    min-height:355px;
+    padding-top:45px;
+    padding-bottom:45px
+  }
+  .heading {
+    padding-top:28px
+  }
+}
+@media(max-width:992px) {
+  .nav-menu { display: none; }
+}
+@media(max-width:900px) {
+  .canvas {
+    padding:30px;
+    grid-template-columns:1fr .7fr 1fr;
+    gap:12px
+  }
+  .statement h2 {
+    font-size:28px
+  }
+  .statement p {
+    font-size:12px
+  }
+  .heading>p {
+    max-width:180px;
+    text-align:right
+  }
+  .caption {
+    font-size:7px;
+    letter-spacing:1px
+  }
+}
+@media(max-width:650px) {
+  .wrap {
+    width:90%
+  }
+  .breadcrumb {
+    margin-top:17px;
+    font-size:9px
+  }
+  .heading {
+    padding:21px 0 22px;
+    display:block
+  }
+  .heading>p {
+    display:none
+  }
+  h1 {
+    font-size:42px
+  }
+  .canvas {
+    padding:25px;
+    grid-template-columns:1fr;
+    gap:25px;
+    border-radius:23px;
+    min-height:unset
+  }
+  .statement,.mission {
+    max-width:none;
+    justify-self:stretch
+  }
+  .statement h2 {
+    font-size:29px;
+    margin:12px 0 10px
+  }
+  .statement h2 br {
+    display:none
+  }
+  .statement p {
+    max-width:none;
+    font-size:12px
+  }
+  .statement .keywords {
+    margin-top:13px;
+    padding-top:9px;
+    font-size:8px
+  }
+  .art {
+    position:absolute;
+    width:125px;
+    right:9px;
+    top:1px;
+    z-index:-1;
+    opacity:.15;
+    pointer-events:none
+  }
+  .caption {
+    display:none
+  }
+  .mission {
+    border-top:1px solid #cbd6be;
+    padding-top:22px
+  }
+  .statement .keywords {
+    border-top:0;
+    padding-top:0
+  }
+  .mark {
+    display:none
+  }
+  .footer {
+    align-items:start;
+    font-size:8px;
+    padding-top:14px
+  }
+  .footer p {
+    max-width:240px
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .art .orbit,.art .bud {
+    transition:none
+  }
+  .canvas:hover .orbit {
+    transform:none
+  }
+  .canvas:hover .bud {
+    transform:none
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ATAS ================= -->
+<header>
+  <nav class="navbar">
+    <div class="brand-container">
+      <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3c-1.5 3-4 5.5-4 9a4 4 0 0 0 8 0c0-3.5-2.5-6-4-9z"/>
+        <path d="M7 10c-2.5 1-4.5 3-5 6 3 .5 5.5-.5 7-2"/>
+        <path d="M17 10c2.5 1 4.5 3 5 6-3 .5-5.5-.5-7-2"/>
+        <path d="M9 18c-1.5 2-3 3-5 3 1.5-2 2-3.5 2-5"/>
+        <path d="M15 18c1.5 2 3 3 5 3-1.5-2-2-3.5-2-5"/>
+      </svg>
+      <div class="brand-text">
+        Tzu Chi University
+        <span class="brand-divider">|</span>
+        <span class="brand-sub">Business Management</span>
+      </div>
+    </div>
+
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-item">Home</a></li>
+      <li class="dropdown">
+        <a href="introduction.html" class="nav-item active">About <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="introduction.html">Department Introduction</a></li>
+          <li><a href="vision.html" class="active-sub">Mission & Vision</a></li>
+          <li><a href="#">Department History</a></li>
+          <li><a href="#">FB Forum</a></li>
+          <li><a href="#">Social Media</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="nav-item">Academics <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Curriculum</a></li>
+          <li><a href="#">Graduation Requirements</a></li>
+          <li><a href="#">Learning Resources</a></li>
+          <li><a href="#">Academic Regulations & Forms</a></li>
+        </ul>
+      </li>
+      <li><a href="#" class="nav-item">Faculty</a></li>
+      <li class="dropdown">
+        <a href="#" class="nav-item">Student Life <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Student Activities</a></li>
+          <li><a href="#">Student Experiences</a></li>
+          <li><a href="#">Clubs & Organizations</a></li>
+          <li><a href="#">Internship Opportunities</a></li>
+          <li><a href="#">Career Paths</a></li>
+          <li><a href="#">Alumni Stories</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="nav-item">News & Events <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Latest News</a></li>
+          <li><a href="#">Upcoming Events</a></li>
+          <li><a href="#">Department Announcements</a></li>
+          <li><a href="#">Student Achievements</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="nav-item">More <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Da Ai TV</a></li>
+          <li><a href="#">Tzu Chi University Main Website</a></li>
+          <li><a href="#">Useful Links</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="search-icon-btn" aria-label="Search" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="lang-pill-btn" onclick="toggleLanguage()">中文</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= ISI ASLI VISION & MISSION ================= -->
+<main class="wrap">
+<div class="breadcrumb">About <span>/</span> Vision & Mission</div>
+<div class="heading">
+<div>
+<div class="eyebrow">The purpose behind our progress</div>
+<h1>Vision <em>&</em> Mission</h1>
+</div>
+<p>Where we’re going.<br>How we’ll get there.</p>
+</div>
+<div class="canvas">
+<span class="mark" aria-hidden="true">✳</span>
+<section class="statement vision" aria-labelledby="vision-title">
+<div class="label">
+<span class="number" aria-hidden="true">01</span>Our vision · 願景</div>
+<h2 id="vision-title">A better future.<br>A broader perspective.</h2>
+<p>Advance innovative, globally connected, and socially responsible business education.</p>
+<div class="keywords">
+<span>Innovation</span>
+<i aria-hidden="true">
+</i>
+<span>Global connections</span>
+<i aria-hidden="true">
+</i>
+<span>Responsibility</span>
+</div>
+</section>
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 320 300" fill="none">
+<defs>
+<linearGradient id="ribbon" x1="60" y1="70" x2="250" y2="230" gradientUnits="userSpaceOnUse">
+<stop stop-color="#9cb788"/>
+<stop offset=".44" stop-color="#4e7958"/>
+<stop offset="1" stop-color="#234d3d"/>
+</linearGradient>
+<linearGradient id="gold" x1="225" y1="70" x2="70" y2="235" gradientUnits="userSpaceOnUse">
+<stop stop-color="#d9c697"/>
+<stop offset="1" stop-color="#a8bd8d"/>
+</linearGradient>
+<radialGradient id="light">
+<stop stop-color="#fffef8"/>
+<stop offset="1" stop-color="#f4f6ec"/>
+</radialGradient>
+</defs>
+<circle cx="160" cy="150" r="116" stroke="#ced9c1" stroke-dasharray="2 7"/>
+<g class="orbit">
+<ellipse cx="160" cy="150" rx="68" ry="108" transform="rotate(40 160 150)" stroke="url(#gold)" stroke-width="23"/>
+<ellipse cx="160" cy="150" rx="68" ry="108" transform="rotate(-40 160 150)" stroke="url(#ribbon)" stroke-width="23"/>
+<path d="M90 220c22 14 48 8 73-13" stroke="#648664" stroke-width="23" stroke-linecap="round"/>
+</g>
+<circle cx="160" cy="150" r="47" fill="url(#light)" stroke="#d2dcc5"/>
+<g class="bud">
+<path d="M160 176v-45" stroke="#355e44" stroke-width="2" stroke-linecap="round"/>
+<path d="M160 155c-17 1-25-9-25-21 16 0 25 8 25 21Z" fill="#a4bc88"/>
+<path d="M160 144c17 1 24-9 24-21-16 0-24 9-24 21Z" fill="#527851"/>
+<path d="M150 177h20" stroke="#7f9b68" stroke-width="1.5" stroke-linecap="round"/>
+</g>
+<circle cx="54" cy="105" r="4" fill="#b8c79e"/>
+<circle cx="260" cy="213" r="4" fill="#bfa16f"/>
+<path d="M256 70v14m-7-7h14" stroke="#bda475" stroke-width="1.5"/>
+</svg>
+<span class="caption">Rooted in care. Growing with purpose.</span>
+</div>
+<section class="statement mission" aria-labelledby="mission-title">
+<div class="label">
+<span class="number" aria-hidden="true">02</span>Our mission · 使命</div>
+<h2 id="mission-title">Professional minds.<br>Compassionate hearts.</h2>
+<p>Develop skilled business professionals with creativity, teamwork, cross-cultural understanding, and strong ethical values.</p>
+<div class="keywords">
+<span>Knowledge</span>
+<i aria-hidden="true">
+</i>
+<span>Character</span>
+<i aria-hidden="true">
+</i>
+<span>Collaboration</span>
+</div>
+</section>
+</div>
+<div class="footer">
+<p>Concise adaptations of the department’s educational goals and future vision.</p>
+<a href="https://mdm.tcu.edu.tw/p/412-1021-2.php?Lang=en" target="_blank" rel="noopener">Official source ↗</a>
+</div>
+</main>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 40) {
+      navbar.style.boxShadow = '0 6px 20px rgba(18, 48, 39, 0.08)';
+      navbar.style.padding = '12px 5%';
+    } else {
+      navbar.style.boxShadow = '0 1px 0 rgba(0, 0, 0, 0.06)';
+      navbar.style.padding = '16px 5%';
+    }
+  });
+
+  function toggleLanguage() {
+    const btn = document.querySelector('.lang-pill-btn');
+    if (btn.innerText === '中文') {
+      btn.innerText = 'EN';
+      alert('Tampilan bahasa berhasil diubah ke Mandarin (Demo).');
+    } else {
+      btn.innerText = '中文';
+      alert('Language switched to English (Demo).');
+    }
+  }
+</script>
+</body>
+</html>
