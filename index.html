@@ -218,7 +218,7 @@
         .bg-botanical-leaf { position: absolute; bottom: -50px; right: -45px; width: 140px; height: 140px; opacity: 0.22; pointer-events: none; z-index: 0; color: var(--tc-green); }
 
         .home-highlights { padding: 72px 5% 90px; background: #f4f8f5; }
-        .highlights-inner { max-width: 1180px; margin: 0 auto; }
+        .highlights-inner { max-width: 1400px; margin: 0 auto; }
         .highlights-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; }
         .highlights-kicker { color: var(--text-muted); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
         .highlights-title { color: var(--text-heading); font: 600 clamp(2rem, 3.5vw, 3rem)/1.1 var(--font-display); }
@@ -240,31 +240,61 @@
         .achievement-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding-top: 20px; }
         .achievement-item { padding-left: 14px; border-left: 2px solid #d5e4d9; }
         .achievement-item .award-ribbon { margin-bottom: 9px; }
-        .events-panel { padding: 30px; border-top: 2px solid var(--tc-green); }
-        .agenda-heading { display: flex; justify-content: space-between; align-items: end; gap: 22px; margin-bottom: 22px; }
+        .events-panel { overflow: hidden; padding: 30px; }
+        .agenda-heading { display: flex; justify-content: space-between; align-items: end; gap: 22px; margin-bottom: 24px; }
         .agenda-heading h3 { color: var(--text-heading); font: 600 1.8rem/1.1 var(--font-display); margin-top: 6px; }
         .agenda-description { max-width: 520px; color: var(--text-muted); font-size: 0.84rem; margin-top: 8px; }
         .agenda-download { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; color: var(--tc-green); font-size: 0.8rem; font-weight: 600; }
         .agenda-download:hover { gap: 13px; }
-        .agenda-months { display: flex; min-width: 0; max-width: 100%; gap: 7px; overflow-x: auto; padding: 0 0 14px; border-bottom: 1px solid #dce6e0; scrollbar-width: thin; }
-        .agenda-month-button { flex: 0 0 auto; padding: 8px 13px; border: 1px solid transparent; border-radius: 999px; background: transparent; color: var(--text-muted); font: 500 0.76rem var(--font-ui); cursor: pointer; transition: background-color 0.2s, color 0.2s; }
-        .agenda-month-button:hover { color: var(--tc-green); background: #f2f6f3; }
-        .agenda-month-button[aria-pressed="true"] { background: var(--tc-green); color: var(--white); }
-        .agenda-active-month { margin: 22px 0 4px; color: var(--text-heading); font: 600 1.4rem/1.2 var(--font-display); }
-        .agenda-event-list { border-top: 1px solid #e7ede9; }
-        .agenda-event { display: grid; grid-template-columns: 82px minmax(0, 1fr) auto; align-items: center; gap: 18px; padding: 17px 4px; border-bottom: 1px solid #e7ede9; }
+        .agenda-dashboard { display: grid; grid-template-columns: minmax(0, 2fr) minmax(320px, 0.9fr); gap: 26px; align-items: start; }
+        .agenda-results { min-width: 0; }
+        .agenda-active-month { margin: 0 0 14px; color: var(--text-heading); font: 600 1.4rem/1.2 var(--font-display); }
+        .agenda-event-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+        .agenda-event { position: relative; display: flex; min-height: 156px; flex-direction: column; align-items: start; padding: 15px 16px; overflow: hidden; border: 1px solid #e0e9e3; background: linear-gradient(140deg, #f3f7f3 0%, #eaf1eb 62%, #e2ece5 100%); color: #53625b; box-shadow: 0 5px 16px rgba(23, 62, 53, .035); transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+        .agenda-event:hover { transform: translateY(-2px); border-color: #bdcec1; box-shadow: 0 10px 22px rgba(23, 62, 53, .08); }
+        .agenda-event::after { position: absolute; top: 0; right: 0; width: 42%; height: 100%; background: linear-gradient(135deg, transparent 48%, rgba(255,255,255,.36) 49%, transparent 100%); content: ''; pointer-events: none; }
         .agenda-event[hidden] { display: none; }
-        .agenda-date { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 58px; border-right: 1px solid #dce6e0; color: var(--tc-green); }
-        .agenda-date span { font-size: 0.62rem; font-weight: 700; letter-spacing: 1.3px; }
-        .agenda-date strong { font: 600 1.5rem/1.1 var(--font-display); }
-        .agenda-event h4 { color: var(--text-heading); font: 600 1.12rem/1.25 var(--font-display); margin-bottom: 4px; }
-        .agenda-event p { color: var(--text-muted); font-size: 0.76rem; line-height: 1.5; }
-        .agenda-kind { color: var(--tc-green); background: #eef4f0; padding: 6px 10px; border-radius: 999px; font-size: 0.64rem; font-weight: 600; white-space: nowrap; }
+        .agenda-event-top { position: relative; z-index: 1; display: flex; width: 100%; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px dashed rgba(64, 92, 76, .3); }
+        .agenda-date { display: flex; flex-direction: column; color: var(--tc-green); line-height: 1.05; }
+        .agenda-date span { font-size: 0.78rem; font-weight: 600; }
+        .agenda-date strong { font: 600 1.5rem/1.05 var(--font-ui); }
+        .agenda-event-time { color: #92763a; font-size: 0.68rem; line-height: 1.6; text-align: right; }
+        .agenda-event-copy { position: relative; z-index: 1; margin-top: 10px; }
+        .agenda-event h4 { color: var(--text-heading); font: 500 1rem/1.45 var(--font-ui); margin-bottom: 5px; }
+        .agenda-event p { color: #64736b; font-size: 0.74rem; line-height: 1.55; }
+        .agenda-kind { margin-top: auto; padding-top: 9px; color: #81672f; font-size: 0.62rem; font-weight: 600; }
         .agenda-empty { padding: 24px 4px; color: var(--text-muted); font-size: 0.84rem; }
         .agenda-empty[hidden] { display: none; }
+        .agenda-sidebar { min-width: 0; overflow: hidden; border-left: 5px solid var(--tc-green); background: #fff; box-shadow: 0 12px 28px rgba(18, 48, 39, .09); }
+        .agenda-promo { position: relative; display: flex; min-height: 164px; align-items: center; justify-content: space-between; gap: 12px; padding: 24px; overflow: hidden; background: linear-gradient(125deg, #173e35 0%, #275b4c 58%, #34705a 100%); color: #fff; }
+        .agenda-promo::before { position: absolute; inset: 0; background: linear-gradient(135deg, transparent 42%, rgba(255,255,255,.12) 43%, transparent 44%), linear-gradient(165deg, transparent 56%, rgba(213, 190, 124, .14) 57%, transparent 58%); content: ''; pointer-events: none; }
+        .agenda-promo-copy, .agenda-promo-title, .agenda-promo-link { position: relative; z-index: 1; }
+        .agenda-promo-copy { max-width: 66%; color: #f1e3b7; font-size: 0.92rem; line-height: 1.45; }
+        .agenda-promo-title { flex-shrink: 0; padding-left: 14px; border-left: 1px solid rgba(255,255,255,.55); font: 600 clamp(1.65rem, 2.5vw, 2.5rem)/1 var(--font-ui); }
+        .agenda-promo-link { position: absolute; right: 22px; bottom: 18px; color: #ead9a0; font-size: 0.75rem; font-weight: 600; }
+        .agenda-calendar { padding: 16px 14px 18px; color: var(--tc-green); }
+        .agenda-calendar-header { display: grid; grid-template-columns: 38px 1fr 38px; align-items: center; gap: 8px; padding-bottom: 12px; border-bottom: 1px solid #e7ece8; box-shadow: 0 5px 9px -10px #222; }
+        .agenda-calendar-header h4 { color: var(--tc-green); font: 500 1.25rem/1.2 var(--font-display); text-align: center; }
+        .agenda-calendar-nav { width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: #6a6873; cursor: pointer; }
+        .agenda-calendar-nav:hover:not(:disabled) { background: #edf3ee; color: var(--tc-green); }
+        .agenda-calendar-nav:disabled { opacity: .3; cursor: default; }
+        .agenda-weekdays, .agenda-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); text-align: center; }
+        .agenda-weekdays { padding: 13px 0 8px; color: var(--tc-green); font: 500 0.75rem var(--font-display); }
+        .agenda-days { row-gap: 4px; }
+        .agenda-day { display: grid; place-items: center; justify-self: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: transparent; color: #59685f; font: 600 0.7rem var(--font-ui); cursor: pointer; }
+        .agenda-day:hover { background: #e9f0eb; }
+        .agenda-day.is-event { background: #edf1ed; color: var(--tc-green); }
+        .agenda-day.is-selected { background: var(--tc-green); color: #fff; }
+        .agenda-day.is-today:not(.is-selected) { box-shadow: inset 0 0 0 1.5px #b49a5a; }
+        .agenda-day.is-outside { color: #c7c7ca; }
+        .agenda-day.is-outside.is-event { background: #f5f7f5; }
+        .agenda-day:focus-visible, .agenda-calendar-nav:focus-visible { outline: 2px solid var(--tc-green); outline-offset: 2px; }
         @media (max-width: 850px) {
             .home-highlights { padding: 58px 5% 68px; }
             .highlights-grid { grid-template-columns: minmax(0, 1fr); }
+            .agenda-dashboard { grid-template-columns: minmax(0, 1fr); }
+            .agenda-sidebar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 1fr); border-left-width: 0; border-top: 5px solid var(--tc-green); }
+            .agenda-promo { min-height: 100%; }
         }
         @media (max-width: 600px) {
             .floating-card { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 0; padding: 24px 10px; }
@@ -274,15 +304,17 @@
             .highlights-heading { display: block; }
             .highlights-intro { margin-top: 12px; }
             .achievement-panel { padding: 18px; }
-            .events-panel { padding: 22px 18px; }
+            .events-panel { padding: 22px 16px; }
             .achievement-feature { grid-template-columns: 1fr; }
             .achievement-poster { max-height: 320px; object-fit: contain; background: #faf7f4; }
             .achievement-list { grid-template-columns: 1fr; }
             .agenda-heading { display: block; }
             .agenda-download { margin-top: 13px; }
-            .agenda-event { grid-template-columns: 62px minmax(0, 1fr); gap: 13px; }
-            .agenda-date { min-height: 54px; }
-            .agenda-kind { grid-column: 2; justify-self: start; margin-top: -5px; }
+            .agenda-event-list { grid-template-columns: 1fr; }
+            .agenda-event { min-height: 150px; }
+            .agenda-sidebar { grid-template-columns: 1fr; }
+            .agenda-promo { min-height: 145px; }
+            .agenda-day { width: 34px; height: 34px; }
         }
 
     </style>
@@ -514,112 +546,138 @@
                 <section class="events-panel" aria-labelledby="events-title">
                     <div class="agenda-heading">
                         <div>
-                            <div class="panel-eyebrow">Official university dates</div>
-                            <h3 id="events-title" class="panel-heading-title">Academic calendar</h3>
-                            <p class="agenda-description">Key academic dates and university events for the 2026–2027 academic year, based on Tzu Chi University's official calendar.</p>
+                            <div class="panel-eyebrow">What's happening on campus</div>
+                            <h3 id="events-title" class="panel-heading-title">Events calendar</h3>
+                            <p class="agenda-description">Explore university dates and academic events for 2026–2027. Select a day to see what's scheduled.</p>
                         </div>
                         <a class="agenda-download" href="assets/academic-calendar-2026-2027.pdf" target="_blank" rel="noopener">Download the full academic calendar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
                     </div>
-                    <div class="agenda-months" role="group" aria-label="Choose a calendar month">
-                        <button class="agenda-month-button" type="button" data-month="2026-10">October</button>
-                        <button class="agenda-month-button" type="button" data-month="2026-11">November</button>
-                        <button class="agenda-month-button" type="button" data-month="2026-12">December</button>
-                        <button class="agenda-month-button" type="button" data-month="2027-01">January</button>
-                        <button class="agenda-month-button" type="button" data-month="2027-02">February</button>
-                        <button class="agenda-month-button" type="button" data-month="2027-03">March</button>
-                        <button class="agenda-month-button" type="button" data-month="2027-04">April</button>
-                        <button class="agenda-month-button" type="button" data-month="2027-05">May</button>
-                        <button class="agenda-month-button" type="button" data-month="2027-06">June</button>
+                    <div class="agenda-dashboard">
+                        <div class="agenda-results">
+                            <h4 class="agenda-active-month" id="agenda-active-month" aria-live="polite">October 2026</h4>
+                            <div class="agenda-event-list" id="agenda-events">
+                                <article class="agenda-event" data-start="2026-10-09" data-end="2026-10-10">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2026-10-09"><span>OCT</span><strong>09–10</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>National Day holiday</h4><p>Day off for National Day observance and university holiday.</p></div>
+                                    <span class="agenda-kind">University holiday</span>
+                                </article>
+                                <article class="agenda-event" data-start="2026-10-16">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2026-10-16"><span>OCT</span><strong>16</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>One-third of the semester completed</h4><p>First-semester academic milestone.</p></div>
+                                    <span class="agenda-kind">Academic milestone</span>
+                                </article>
+                                <article class="agenda-event" data-start="2026-10-21">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2026-10-21"><span>OCT</span><strong>21</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Tzu Cheng &amp; Yi Te Homecoming Gathering</h4><p>University gathering for undergraduate and graduate programs.</p></div>
+                                    <span class="agenda-kind">University event</span>
+                                </article>
+                                <article class="agenda-event" data-start="2026-10-25" data-end="2026-10-26">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2026-10-25"><span>OCT</span><strong>25–26</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>University holiday: Taiwan Commemoration Day</h4><p>October 26 is the day off for holiday observance.</p></div>
+                                    <span class="agenda-kind">University holiday</span>
+                                </article>
+                                <article class="agenda-event" data-start="2026-11-02" data-end="2026-11-06">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2026-11-02"><span>NOV</span><strong>02–06</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Midterm examination week</h4><p>First-semester midterm exams.</p></div>
+                                    <span class="agenda-kind">Academic milestone</span>
+                                </article>
+                                <article class="agenda-event" data-start="2026-11-12" data-end="2026-11-15">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2026-11-12"><span>NOV</span><strong>12–15</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Tzu Chi 60th Anniversary Sutra Adaptation</h4><p>University anniversary event listed in the academic calendar.</p></div>
+                                    <span class="agenda-kind">University event</span>
+                                </article>
+                                <article class="agenda-event" data-start="2026-11-25">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2026-11-25"><span>NOV</span><strong>25</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>University Sports Day</h4><p>No classes.</p></div>
+                                    <span class="agenda-kind">University event</span>
+                                </article>
+                                <article class="agenda-event" data-start="2026-11-27">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2026-11-27"><span>NOV</span><strong>27</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Two-thirds of the semester completed</h4><p>First-semester academic milestone.</p></div>
+                                    <span class="agenda-kind">Academic milestone</span>
+                                </article>
+                                <article class="agenda-event" data-start="2026-12-25">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2026-12-25"><span>DEC</span><strong>25</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Constitution Day</h4><p>University holiday.</p></div>
+                                    <span class="agenda-kind">University holiday</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-01-04" data-end="2027-01-08">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-01-04"><span>JAN</span><strong>04–08</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Final examination week</h4><p>First-semester final exams.</p></div>
+                                    <span class="agenda-kind">Academic milestone</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-01-11">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-01-11"><span>JAN</span><strong>11</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Winter break begins</h4><p>First semester ends on January 31.</p></div>
+                                    <span class="agenda-kind">Semester break</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-01-31">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-01-31"><span>JAN</span><strong>31</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Fall semester ends</h4><p>End of the first semester.</p></div>
+                                    <span class="agenda-kind">Academic milestone</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-02-22">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-02-22"><span>FEB</span><strong>22</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Second semester begins</h4><p>First day of classes.</p></div>
+                                    <span class="agenda-kind">Academic milestone</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-02-28">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-02-28"><span>FEB</span><strong>28</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Peace Memorial Day</h4><p>University holiday.</p></div>
+                                    <span class="agenda-kind">University holiday</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-03-08" data-end="2027-03-12">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-03-08"><span>MAR</span><strong>08–12</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Late course add period</h4><p>Paper applications for late course additions.</p></div>
+                                    <span class="agenda-kind">Academic milestone</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-04-19" data-end="2027-04-23">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-04-19"><span>APR</span><strong>19–23</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Midterm examination week</h4><p>Second-semester midterm exams.</p></div>
+                                    <span class="agenda-kind">Academic milestone</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-05-01">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-05-01"><span>MAY</span><strong>01</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Labor Day</h4><p>University holiday.</p></div>
+                                    <span class="agenda-kind">University holiday</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-06-09">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-06-09"><span>JUN</span><strong>09</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Dragon Boat Festival</h4><p>University holiday.</p></div>
+                                    <span class="agenda-kind">University holiday</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-06-12">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-06-12"><span>JUN</span><strong>12</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Commencement ceremony</h4><p>University graduation ceremony.</p></div>
+                                    <span class="agenda-kind">University event</span>
+                                </article>
+                                <article class="agenda-event" data-start="2027-06-21" data-end="2027-06-25">
+                                    <div class="agenda-event-top"><time class="agenda-date" datetime="2027-06-21"><span>JUN</span><strong>21–25</strong></time></div>
+                                    <div class="agenda-event-copy"><h4>Final examination week</h4><p>Second-semester final exams.</p></div>
+                                    <span class="agenda-kind">Academic milestone</span>
+                                </article>
+                            </div>
+                            <p class="agenda-empty" id="agenda-empty" hidden>No scheduled events for this date.</p>
+                        </div>
+                        <aside class="agenda-sidebar">
+                            <div class="agenda-promo">
+                                <p class="agenda-promo-copy">What's happening at Tzu Chi University</p>
+                                <h4 class="agenda-promo-title">Events</h4>
+                                <a class="agenda-promo-link" href="assets/academic-calendar-2026-2027.pdf" target="_blank" rel="noopener">Read More <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+                            <section class="agenda-calendar" aria-label="Academic calendar">
+                                <div class="agenda-calendar-header">
+                                    <button class="agenda-calendar-nav" id="agenda-previous" type="button" aria-label="Previous month"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                                    <h4 id="agenda-calendar-month" aria-live="polite">October 2026</h4>
+                                    <button class="agenda-calendar-nav" id="agenda-next" type="button" aria-label="Next month"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                                </div>
+                                <div class="agenda-weekdays" aria-hidden="true">
+                                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                                </div>
+                                <div class="agenda-days" id="agenda-days" role="group" aria-label="Choose a day"></div>
+                            </section>
+                        </aside>
                     </div>
-                    <h4 class="agenda-active-month" id="agenda-active-month" aria-live="polite">October 2026</h4>
-                    <div class="agenda-event-list" id="agenda-events">
-                        <article class="agenda-event" data-month="2026-10" data-start="2026-10-25">
-                            <time class="agenda-date" datetime="2026-10-25"><span>OCT</span><strong>25–26</strong></time>
-                            <div><h4>University holiday: Taiwan Commemoration Day</h4><p>October 26 is the day off for holiday observance.</p></div>
-                            <span class="agenda-kind">University holiday</span>
-                        </article>
-                        <article class="agenda-event" data-month="2026-11" data-start="2026-11-02">
-                            <time class="agenda-date" datetime="2026-11-02"><span>NOV</span><strong>02–06</strong></time>
-                            <div><h4>Midterm examination week</h4><p>First-semester midterm exams.</p></div>
-                            <span class="agenda-kind">Academic milestone</span>
-                        </article>
-                        <article class="agenda-event" data-month="2026-11" data-start="2026-11-12">
-                            <time class="agenda-date" datetime="2026-11-12"><span>NOV</span><strong>12–15</strong></time>
-                            <div><h4>Tzu Chi 60th Anniversary Sutra Adaptation</h4><p>University anniversary event listed in the academic calendar.</p></div>
-                            <span class="agenda-kind">University event</span>
-                        </article>
-                        <article class="agenda-event" data-month="2026-11" data-start="2026-11-25">
-                            <time class="agenda-date" datetime="2026-11-25"><span>NOV</span><strong>25</strong></time>
-                            <div><h4>University Sports Day</h4><p>No classes.</p></div>
-                            <span class="agenda-kind">University event</span>
-                        </article>
-                        <article class="agenda-event" data-month="2026-11" data-start="2026-11-27">
-                            <time class="agenda-date" datetime="2026-11-27"><span>NOV</span><strong>27</strong></time>
-                            <div><h4>Two-thirds of the semester completed</h4><p>First-semester academic milestone.</p></div>
-                            <span class="agenda-kind">Academic milestone</span>
-                        </article>
-                        <article class="agenda-event" data-month="2026-12" data-start="2026-12-25">
-                            <time class="agenda-date" datetime="2026-12-25"><span>DEC</span><strong>25</strong></time>
-                            <div><h4>Constitution Day</h4><p>University holiday.</p></div>
-                            <span class="agenda-kind">University holiday</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-01" data-start="2027-01-04">
-                            <time class="agenda-date" datetime="2027-01-04"><span>JAN</span><strong>04–08</strong></time>
-                            <div><h4>Final examination week</h4><p>First-semester final exams.</p></div>
-                            <span class="agenda-kind">Academic milestone</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-01" data-start="2027-01-11">
-                            <time class="agenda-date" datetime="2027-01-11"><span>JAN</span><strong>11</strong></time>
-                            <div><h4>Winter break begins</h4><p>First semester ends on January 31.</p></div>
-                            <span class="agenda-kind">Semester break</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-01" data-start="2027-01-31">
-                            <time class="agenda-date" datetime="2027-01-31"><span>JAN</span><strong>31</strong></time>
-                            <div><h4>Fall semester ends</h4><p>End of the first semester.</p></div>
-                            <span class="agenda-kind">Academic milestone</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-02" data-start="2027-02-22">
-                            <time class="agenda-date" datetime="2027-02-22"><span>FEB</span><strong>22</strong></time>
-                            <div><h4>Second semester begins</h4><p>First day of classes.</p></div>
-                            <span class="agenda-kind">Academic milestone</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-02" data-start="2027-02-28">
-                            <time class="agenda-date" datetime="2027-02-28"><span>FEB</span><strong>28</strong></time>
-                            <div><h4>Peace Memorial Day</h4><p>University holiday.</p></div>
-                            <span class="agenda-kind">University holiday</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-03" data-start="2027-03-08">
-                            <time class="agenda-date" datetime="2027-03-08"><span>MAR</span><strong>08–12</strong></time>
-                            <div><h4>Late course add period</h4><p>Paper applications for late course additions.</p></div>
-                            <span class="agenda-kind">Academic milestone</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-04" data-start="2027-04-19">
-                            <time class="agenda-date" datetime="2027-04-19"><span>APR</span><strong>19–23</strong></time>
-                            <div><h4>Midterm examination week</h4><p>Second-semester midterm exams.</p></div>
-                            <span class="agenda-kind">Academic milestone</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-05" data-start="2027-05-01">
-                            <time class="agenda-date" datetime="2027-05-01"><span>MAY</span><strong>01</strong></time>
-                            <div><h4>Labor Day</h4><p>University holiday.</p></div>
-                            <span class="agenda-kind">University holiday</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-06" data-start="2027-06-09">
-                            <time class="agenda-date" datetime="2027-06-09"><span>JUN</span><strong>09</strong></time>
-                            <div><h4>Dragon Boat Festival</h4><p>University holiday.</p></div>
-                            <span class="agenda-kind">University holiday</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-06" data-start="2027-06-12">
-                            <time class="agenda-date" datetime="2027-06-12"><span>JUN</span><strong>12</strong></time>
-                            <div><h4>Commencement ceremony</h4><p>University graduation ceremony.</p></div>
-                            <span class="agenda-kind">University event</span>
-                        </article>
-                        <article class="agenda-event" data-month="2027-06" data-start="2027-06-21">
-                            <time class="agenda-date" datetime="2027-06-21"><span>JUN</span><strong>21–25</strong></time>
-                            <div><h4>Final examination week</h4><p>Second-semester final exams.</p></div>
-                            <span class="agenda-kind">Academic milestone</span>
-                        </article>
-                    </div>
-                    <p class="agenda-empty" id="agenda-empty" hidden>No listed dates for this month.</p>
                 </section>
             </div>
         </div>
@@ -687,54 +745,104 @@
     <script src="translations.js"></script>
     <script>
         (() => {
-            const monthButtons = [...document.querySelectorAll('.agenda-month-button')];
             const events = [...document.querySelectorAll('.agenda-event')];
             const activeMonth = document.querySelector('#agenda-active-month');
+            const calendarMonth = document.querySelector('#agenda-calendar-month');
+            const daysContainer = document.querySelector('#agenda-days');
             const emptyState = document.querySelector('#agenda-empty');
             const monthLabels = {
-                '2026-10': 'October 2026',
-                '2026-11': 'November 2026',
-                '2026-12': 'December 2026',
-                '2027-01': 'January 2027',
-                '2027-02': 'February 2027',
-                '2027-03': 'March 2027',
-                '2027-04': 'April 2027',
-                '2027-05': 'May 2027',
-                '2027-06': 'June 2027'
+                '2026-10': 'October 2026', '2026-11': 'November 2026',
+                '2026-12': 'December 2026', '2027-01': 'January 2027',
+                '2027-02': 'February 2027', '2027-03': 'March 2027',
+                '2027-04': 'April 2027', '2027-05': 'May 2027', '2027-06': 'June 2027'
             };
-            const monthKeys = monthButtons.map(button => button.dataset.month);
-            const now = new Date();
-            const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+            const monthKeys = Object.keys(monthLabels);
+            const todayDate = new Date();
+            const today = `${todayDate.getFullYear()}-${String(todayDate.getMonth() + 1).padStart(2, '0')}-${String(todayDate.getDate()).padStart(2, '0')}`;
             const currentMonth = today.slice(0, 7);
-            const initialMonth = monthKeys.find(month => month >= currentMonth
-                && events.some(event => event.dataset.month === month && event.dataset.start >= today))
-                || monthKeys[monthKeys.length - 1];
+            let activeMonthKey = monthKeys.includes(currentMonth) ? currentMonth : monthKeys[0];
+            let selectedDate = null;
 
-            function selectMonth(month) {
-                const selectedButton = monthButtons.find(button => button.dataset.month === month);
-                if (!selectedButton) return;
+            function toDateKey(date) {
+                return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+            }
 
-                monthButtons.forEach(button => {
-                    button.setAttribute('aria-pressed', String(button === selectedButton));
-                });
+            function updateEventCards() {
+                const [year, month] = activeMonthKey.split('-').map(Number);
+                const monthStart = `${activeMonthKey}-01`;
+                const monthEnd = toDateKey(new Date(year, month, 0));
                 let visibleCount = 0;
                 events.forEach(event => {
-                    const isVisible = event.dataset.month === month;
+                    const eventStart = event.dataset.start;
+                    const eventEnd = event.dataset.end || eventStart;
+                    const overlapsMonth = eventStart <= monthEnd && eventEnd >= monthStart;
+                    const matchesSelectedDate = !selectedDate || (eventStart <= selectedDate && eventEnd >= selectedDate);
+                    const isVisible = overlapsMonth && matchesSelectedDate;
                     event.hidden = !isVisible;
                     if (isVisible) visibleCount += 1;
                 });
-                activeMonth.textContent = window.translateText(monthLabels[month]);
+                activeMonth.textContent = selectedDate
+                    ? new Intl.DateTimeFormat(document.documentElement.lang, { dateStyle: 'long' }).format(new Date(`${selectedDate}T12:00:00`))
+                    : window.translateText(monthLabels[activeMonthKey]);
                 emptyState.hidden = visibleCount > 0;
             }
 
-            monthButtons.forEach(button => {
-                button.addEventListener('click', () => selectMonth(button.dataset.month));
-            });
+            function renderCalendar() {
+                const [year, month] = activeMonthKey.split('-').map(Number);
+                const monthFirst = new Date(year, month - 1, 1);
+                const gridStart = new Date(year, month - 1, 1 - ((monthFirst.getDay() + 6) % 7));
+                const monthLast = new Date(year, month, 0);
+                calendarMonth.textContent = window.translateText(monthLabels[activeMonthKey]);
+                document.querySelector('#agenda-previous').disabled = activeMonthKey === monthKeys[0];
+                document.querySelector('#agenda-next').disabled = activeMonthKey === monthKeys[monthKeys.length - 1];
+                daysContainer.replaceChildren();
+
+                for (let offset = 0; offset < 42; offset += 1) {
+                    const day = new Date(gridStart);
+                    day.setDate(gridStart.getDate() + offset);
+                    const dateKey = toDateKey(day);
+                    const isCurrentMonth = day.getMonth() === monthFirst.getMonth();
+                    const isWithinCalendar = dateKey >= `${monthKeys[0]}-01`
+                        && dateKey <= toDateKey(new Date(Number(monthKeys[monthKeys.length - 1].slice(0, 4)), Number(monthKeys[monthKeys.length - 1].slice(5, 7)), 0));
+                    const hasEvent = events.some(event => dateKey >= event.dataset.start && dateKey <= (event.dataset.end || event.dataset.start));
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'agenda-day';
+                    button.textContent = String(day.getDate());
+                    button.disabled = !isWithinCalendar;
+                    button.setAttribute('aria-pressed', String(dateKey === selectedDate));
+                    button.setAttribute('aria-label', `${new Intl.DateTimeFormat(document.documentElement.lang, { dateStyle: 'long' }).format(day)}${hasEvent ? `, ${window.translateText('event scheduled')}` : ''}`);
+                    if (!isCurrentMonth) button.classList.add('is-outside');
+                    if (hasEvent) button.classList.add('is-event');
+                    if (dateKey === selectedDate) button.classList.add('is-selected');
+                    if (dateKey === today) button.classList.add('is-today');
+                    button.addEventListener('click', () => {
+                        if (!isCurrentMonth) activeMonthKey = dateKey.slice(0, 7);
+                        selectedDate = selectedDate === dateKey ? null : dateKey;
+                        renderCalendar();
+                        updateEventCards();
+                    });
+                    daysContainer.append(button);
+                }
+            }
+
+            function shiftMonth(direction) {
+                const nextIndex = monthKeys.indexOf(activeMonthKey) + direction;
+                if (nextIndex < 0 || nextIndex >= monthKeys.length) return;
+                activeMonthKey = monthKeys[nextIndex];
+                selectedDate = null;
+                renderCalendar();
+                updateEventCards();
+            }
+
+            document.querySelector('#agenda-previous').addEventListener('click', () => shiftMonth(-1));
+            document.querySelector('#agenda-next').addEventListener('click', () => shiftMonth(1));
             window.addEventListener('website-language-changed', () => {
-                const selectedButton = monthButtons.find(button => button.getAttribute('aria-pressed') === 'true');
-                if (selectedButton) activeMonth.textContent = window.translateText(monthLabels[selectedButton.dataset.month]);
+                renderCalendar();
+                updateEventCards();
             });
-            selectMonth(initialMonth);
+            renderCalendar();
+            updateEventCards();
         })();
     </script>
 </body>
