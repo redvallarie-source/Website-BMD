@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Department History · TCU Business Management</title>
+<meta name="description" content="Open the department's archive: explore the evolution from Accounting in 2000 to Business Management at Tzu Chi University.">
+
+<!-- Google Fonts & Font Awesome khusus untuk Navbar agar 100% sama dengan halaman lain -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- CSS: warna, layout, dan tampilan mobile -->
+<style>
+:root {
+  --ink:#245440;
+  --text:#58705e;
+  --paper:#f6faf5;
+  --line:#dbe7d8;
+  --sage:#e0efdd;
+  --gold:#8eb982;
+  --tan:#e4f0df;
+
+  /* Variabel khusus Navbar */
+  --tc-green: #173e35;
+  --tc-green-dark: #102d26;
+  --white: #ffffff;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-ui: 'Inter', -apple-system, sans-serif;
+}
+* {
+  box-sizing:border-box
+}
+body {
+  margin:0;
+  color:var(--ink);
+  background:var(--paper);
+  font:14px/1.7 'Segoe UI',Arial,sans-serif
+}
+a {
+  color:inherit;
+  text-decoration:none
+}
+button {
+  font:inherit;
+  cursor:pointer
+}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:5px
+}
+
+/* ================= CSS NAVBAR (SAMA PERSIS DENGAN HALAMAN LAIN) ================= */
+.navbar {
+  font-family: var(--font-ui);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 5%;
+  background-color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+.brand-container { display: flex; align-items: center; gap: 12px; }
+.brand-logo-svg { width: 38px; height: 38px; color: var(--tc-green); }
+.brand-text { font-family: var(--font-display); font-size: 1.45rem; font-weight: 700; color: var(--tc-green); display: flex; align-items: center; line-height: 1.2; }
+.brand-divider { margin: 0 14px; color: #b5c4bd; font-weight: 300; font-size: 1.2rem; }
+.brand-sub { font-family: var(--font-ui); font-size: 0.95rem; font-weight: 500; color: #2d3e37; }
+
+.nav-menu { display: flex; align-items: center; list-style: none; margin: 0; padding: 0; gap: 22px; }
+.nav-item { font-size: 0.88rem; font-weight: 500; color: #3b4b45; position: relative; padding: 8px 0; display: flex; align-items: center; gap: 5px; transition: all 0.25s ease; }
+.nav-item i { font-size: 0.65rem; color: #72827b; transition: transform 0.3s ease; }
+.nav-item:hover, .nav-item.active { color: var(--tc-green); }
+.nav-item:hover i, .nav-item.active i { color: var(--tc-green); }
+.nav-item.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--tc-green); border-radius: 2px; }
+
+.nav-right { display: flex; align-items: center; gap: 18px; }
+.search-icon-btn { background: none; border: none; color: #3b4b45; font-size: 0.95rem; cursor: pointer; padding: 6px; transition: color 0.2s ease; }
+.search-icon-btn:hover { color: var(--tc-green); }
+.lang-pill-btn { font-family: var(--font-ui); background-color: var(--tc-green); color: var(--white); font-size: 0.82rem; font-weight: 500; padding: 6px 16px; border-radius: 999px; border: none; cursor: pointer; letter-spacing: 0.5px; transition: all 0.25s ease; }
+.lang-pill-btn:hover { background-color: var(--tc-green-dark); transform: translateY(-1px); }
+
+.dropdown { position: relative; list-style: none; }
+.dropdown-menu { position: absolute; top: 130%; left: 0; background-color: var(--white); box-shadow: 0 15px 35px rgba(18, 48, 39, 0.08); border-radius: 12px; min-width: 240px; padding: 12px 0; margin: 0; list-style: none; opacity: 0; visibility: hidden; transform: translateY(15px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1000; border: 1px solid rgba(220, 230, 224, 0.5); }
+.dropdown::after { content: ''; position: absolute; top: 100%; left: 0; width: 100%; height: 30px; }
+.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); top: 100%; }
+.dropdown:hover .nav-item i { transform: rotate(180deg); }
+.dropdown-menu li { list-style: none; }
+.dropdown-menu li a { display: block; padding: 10px 24px; font-size: 0.88rem; font-weight: 500; color: #4a5853; transition: all 0.25s ease; }
+.dropdown-menu li a:hover, .dropdown-menu li a.active-sub { color: var(--tc-green); background-color: #f5f8f6; }
+.dropdown-menu li a:hover { padding-left: 32px; }
+.nav-menu > li:last-child .dropdown-menu { left: auto; right: -20px; }
+
+/* ================= CSS ASLI DEPARTMENT HISTORY (TIDAK DIUBAH SAMA SEKALI) ================= */
+.wrap {
+  width:min(1160px,90%);
+  margin:auto
+}
+.crumb {
+  font-size:10px;
+  color:#738c72;
+  margin-top:24px
+}
+.crumb span {
+  padding:0 10px;
+  color:#a4b9a0
+}
+.masthead {
+  padding:24px 0 29px;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  border-bottom:1px solid var(--ink)
+}
+.kicker {
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#6b876d;
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+.kicker:before {
+  content:'';
+  width:25px;
+  height:1px;
+  background:var(--gold)
+}
+h1 {
+  font:52px/1.12 Georgia;
+  letter-spacing:-1.7px;
+  margin:10px 0 0;
+  font-weight:normal
+}
+.masthead p {
+  font-size:12px;
+  color:var(--text);
+  margin:0 0 3px;
+  max-width:260px
+}
+.range {
+  font-size:11px;
+  color:#6e8c6a;
+  display:block;
+  margin-bottom:9px;
+  letter-spacing:2px
+}
+.archive {
+  display:grid;
+  grid-template-columns:145px 1fr;
+  gap:35px;
+  padding:31px 0 33px
+}
+.index-label {
+  font-size:9px;
+  letter-spacing:1.7px;
+  text-transform:uppercase;
+  color:#6a8267;
+  margin-bottom:20px
+}
+.timeline {
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  border-left:1px solid #cddfc6
+}
+.year-tab {
+  position:relative;
+  text-align:left;
+  color:#758c70;
+  background:transparent;
+  border:0;
+  padding:11px 12px 11px 21px;
+  display:block;
+  transition:background .2s,color .2s;
+  min-height:62px
+}
+.year-tab:before {
+  content:'';
+  position:absolute;
+  left:-4px;
+  top:24px;
+  width:7px;
+  height:7px;
+  border:2px solid var(--paper);
+  background:#a6c29a;
+  border-radius:50%;
+  box-sizing:content-box;
+  transform:translateX(-1px)
+}
+.year-tab strong {
+  display:block;
+  font:25px Georgia;
+  font-weight:normal
+}
+.year-tab small {
+  font-size:9px;
+  display:block;
+  margin-top:2px
+}
+.year-tab[aria-selected=true] {
+  color:var(--ink);
+  background:var(--sage)
+}
+.year-tab[aria-selected=true]:before {
+  background:var(--ink)
+}
+.year-tab[aria-selected=true]:after {
+  content:'↗';
+  position:absolute;
+  right:11px;
+  top:14px;
+  font-size:14px
+}
+.year-tab:hover {
+  color:var(--ink);
+  background:#edf5e8
+}
+.index-note {
+  font-size:9px;
+  color:#7b9177;
+  line-height:1.7;
+  margin-top:21px;
+  max-width:110px
+}
+.journal-wrap {
+  position:relative;
+  isolation:isolate;
+  min-width:0;
+  margin-right:9px
+}
+.journal-wrap:before {
+  content:'';
+  position:absolute;
+  inset:8px -9px -8px 9px;
+  background:#dfecda;
+  border:1px solid #cfdfc7;
+  z-index:-1;
+  border-radius:2px;
+  transform:rotate(.5deg)
+}
+.journal {
+  background:#ffffff;
+  border:1px solid #d5e2d0;
+  box-shadow:0 12px 35px #335b280a;
+  border-radius:2px;
+  position:relative;
+  padding:24px 31px 18px;
+  min-height:392px;
+  display:flex;
+  flex-direction:column;
+  outline-offset:7px
+}
+.journal:before {
+  content:'';
+  position:absolute;
+  left:0;
+  top:0;
+  width:5px;
+  height:100%;
+  background:#d9ead1
+}
+.journal-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #e1ebdc;
+  padding-bottom:13px;
+  font-size:8px;
+  color:#6d896d;
+  letter-spacing:1.5px;
+  text-transform:uppercase
+}
+.journal-header .date-range {
+  font:13px Georgia;
+  letter-spacing:1px
+}
+.chapter {
+  display:grid;
+  grid-template-columns:1.25fr 1fr;
+  gap:28px;
+  align-items:center;
+  flex:1;
+  padding:14px 0 21px
+}
+.year {
+  font:86px/.98 Georgia;
+  letter-spacing:-5px;
+  color:var(--ink);
+  margin:0 0 5px
+}
+.era {
+  color:#6d8866;
+  font-size:9px;
+  min-height:16px;
+  letter-spacing:.2px
+}
+.story .topic {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:8px;
+  letter-spacing:1.4px;
+  color:#6d8966;
+  text-transform:uppercase;
+  margin-top:19px
+}
+.story .topic:before {
+  content:'';
+  height:1px;
+  width:21px;
+  background:#9bbd86
+}
+.story h2 {
+  font:27px/1.15 Georgia;
+  letter-spacing:-.5px;
+  margin:9px 0 12px;
+  font-weight:normal
+}
+.story p {
+  font-size:12px;
+  line-height:1.85;
+  color:var(--text);
+  margin:0;
+  max-width:385px
+}
+.illustration {
+  position:relative;
+  isolation:isolate;
+  padding:10px 7px 12px;
+  max-width:275px;
+  justify-self:center;
+  width:100%
+}
+.illustration:before {
+  content:'';
+  position:absolute;
+  inset:17px 0 14px 0;
+  background:#e3efdc;
+  border:1px solid #d3e4c9;
+  transform:rotate(4deg);
+  z-index:-2
+}
+.illustration:after {
+  content:'';
+  position:absolute;
+  inset:10px 0 20px 0;
+  background:#eef6e9;
+  border:1px solid #d8e7cf;
+  transform:rotate(-3deg);
+  z-index:-1
+}
+.illustration svg {
+  width:100%;
+  height:auto;
+  display:block
+}
+.art-caption {
+  font-size:7px;
+  letter-spacing:1.1px;
+  text-transform:uppercase;
+  text-align:center;
+  color:#738f6a;
+  line-height:1.5;
+  padding:0 7px
+}
+.stamp {
+  position:absolute;
+  right:-8px;
+  top:-9px;
+  transform:rotate(12deg);
+  font-size:8px;
+  letter-spacing:1px;
+  color:#66876a;
+  border:1px solid #9dbc8c;
+  outline:1px solid #b4cea6;
+  outline-offset:3px;
+  padding:4px 9px;
+  background:#ffffffb3
+}
+.journal-bottom {
+  border-top:1px solid #dce9d5;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding-top:12px;
+  margin-top:auto
+}
+.source-link {
+  font-size:9px;
+  color:#6a8267;
+  border-bottom:1px solid #bbd2ae;
+  padding-bottom:2px
+}
+.controls {
+  display:flex;
+  gap:11px;
+  align-items:center
+}
+.position {
+  font-size:9px;
+  letter-spacing:1px;
+  color:#778f6d;
+  min-width:39px
+}
+.control {
+  background:transparent;
+  border:1px solid #c6ddbb;
+  color:var(--ink);
+  height:28px;
+  width:28px;
+  display:grid;
+  place-items:center;
+  font-size:15px;
+  padding:0;
+  line-height:1;
+  transition:background .2s
+}
+.control:hover {
+  background:var(--sage)
+}
+.footer {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+  padding:16px 0 25px;
+  border-top:1px solid var(--line);
+  font-size:9px;
+  color:#73886e
+}
+.footer p {
+  margin:0;
+  max-width:680px
+}
+.footer a {
+  white-space:nowrap;
+  border-bottom:1px solid #bed3b3;
+  padding-bottom:2px
+}
+.journal.fade .story,.journal.fade .illustration {
+  animation:pageIn .3s ease-out
+}
+@keyframes pageIn {
+  from {
+    opacity:.2;
+    transform:translateY(5px)
+  }
+  to {
+    opacity:1;
+    transform:none
+  }
+}
+@media(min-width:1400px) {
+  .archive {
+    padding-top:37px;
+    padding-bottom:39px
+  }
+  .journal {
+    min-height:420px
+  }
+  .chapter {
+    padding-top:20px;
+    padding-bottom:25px
+  }
+  .year {
+    font-size:96px
+  }
+  .story h2 {
+    font-size:30px
+  }
+  .story p {
+    font-size:13px
+  }
+}
+@media(max-width:992px) {
+  .nav-menu { display: none; }
+}
+@media(max-width:900px) {
+  .archive {
+    grid-template-columns:115px 1fr;
+    gap:23px
+  }
+  .journal {
+    padding:22px;
+    min-height:390px
+  }
+  .chapter {
+    gap:18px;
+    grid-template-columns:1.25fr .85fr
+  }
+  .year {
+    font-size:78px
+  }
+  .story h2 {
+    font-size:24px
+  }
+  .illustration {
+    padding-left:0;
+    padding-right:0
+  }
+  .art-caption {
+    font-size:6px
+  }
+  .masthead p {
+    max-width:220px
+  }
+}
+@media(max-width:650px) {
+  .crumb {
+    margin-top:18px;
+    font-size:9px
+  }
+  .masthead {
+    padding:21px 0 22px;
+    display:block
+  }
+  .masthead h1 {
+    font-size:42px
+  }
+  .masthead p {
+    margin-top:15px;
+    font-size:11px;
+    max-width:none
+  }
+  .range {
+    display:none
+  }
+  .archive {
+    display:block;
+    padding:21px 0 26px
+  }
+  .index-label {
+    font-size:8px;
+    margin-bottom:10px
+  }
+  .timeline {
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border-left:0;
+    border-bottom:1px solid #cddfc6;
+    margin-bottom:23px
+  }
+  .year-tab {
+    text-align:center;
+    min-height:64px;
+    padding:9px 3px 13px
+  }
+  .year-tab strong {
+    font-size:21px
+  }
+  .year-tab small {
+    font-size:7px
+  }
+  .year-tab:before {
+    display:none
+  }
+  .year-tab[aria-selected=true]:after {
+    content:'';
+    height:2px;
+    left:0;
+    right:0;
+    top:auto;
+    bottom:-1px;
+    background:var(--ink)
+  }
+  .index-note {
+    display:none
+  }
+  .journal-wrap {
+    margin-right:6px
+  }
+  .journal {
+    padding:20px 20px 15px;
+    min-height:unset
+  }
+  .journal-header {
+    font-size:7px;
+    letter-spacing:1px
+  }
+  .journal-header .date-range {
+    font-size:11px
+  }
+  .chapter {
+    position:relative;
+    display:block;
+    min-height:285px;
+    padding:19px 0 24px
+  }
+  .year {
+    font-size:77px
+  }
+  .era {
+    font-size:8px;
+    max-width:165px;
+    line-height:1.7
+  }
+  .story .topic {
+    margin-top:19px
+  }
+  .story h2 {
+    font-size:27px;
+    max-width:none;
+    position:relative;
+    z-index:1
+  }
+  .story p {
+    font-size:12px;
+    max-width:none
+  }
+  .illustration {
+    width:112px;
+    position:absolute;
+    top:17px;
+    right:0;
+    padding:0;
+    opacity:.9
+  }
+  .illustration .art-caption,.stamp {
+    display:none
+  }
+  .illustration svg {
+    position:relative
+  }
+  .journal-bottom {
+    padding-top:11px
+  }
+  .source-link {
+    font-size:8px;
+    max-width:155px
+  }
+  .position {
+    font-size:8px;
+    min-width:32px
+  }
+  .controls {
+    gap:7px
+  }
+  .control {
+    height:26px;
+    width:26px
+  }
+  .footer {
+    font-size:8px;
+    gap:20px;
+    align-items:start
+  }
+  .footer p {
+    max-width:230px
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*:before,*:after {
+    animation:none!important;
+    transition:none!important
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ATAS ================= -->
+<header>
+  <nav class="navbar">
+    <div class="brand-container">
+      <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3c-1.5 3-4 5.5-4 9a4 4 0 0 0 8 0c0-3.5-2.5-6-4-9z"/>
+        <path d="M7 10c-2.5 1-4.5 3-5 6 3 .5 5.5-.5 7-2"/>
+        <path d="M17 10c2.5 1 4.5 3 5 6-3 .5-5.5-.5-7-2"/>
+        <path d="M9 18c-1.5 2-3 3-5 3 1.5-2 2-3.5 2-5"/>
+        <path d="M15 18c1.5 2 3 3 5 3-1.5-2-2-3.5-2-5"/>
+      </svg>
+      <div class="brand-text">
+        Tzu Chi University
+        <span class="brand-divider">|</span>
+        <span class="brand-sub">Business Management</span>
+      </div>
+    </div>
+
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-item">Home</a></li>
+      <li class="dropdown">
+        <a href="introduction.html" class="nav-item active">About <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="introduction.html">Department Introduction</a></li>
+          <li><a href="vision.html">Mission & Vision</a></li>
+          <li><a href="history.html" class="active-sub">Department History</a></li>
+          <li><a href="#">FB Forum</a></li>
+          <li><a href="#">Social Media</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="nav-item">Academics <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Curriculum</a></li>
+          <li><a href="#">Graduation Requirements</a></li>
+          <li><a href="#">Learning Resources</a></li>
+          <li><a href="#">Academic Regulations & Forms</a></li>
+        </ul>
+      </li>
+      <li><a href="#" class="nav-item">Faculty</a></li>
+      <li class="dropdown">
+        <a href="#" class="nav-item">Student Life <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Student Activities</a></li>
+          <li><a href="#">Student Experiences</a></li>
+          <li><a href="#">Clubs & Organizations</a></li>
+          <li><a href="#">Internship Opportunities</a></li>
+          <li><a href="#">Career Paths</a></li>
+          <li><a href="#">Alumni Stories</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="nav-item">News & Events <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Latest News</a></li>
+          <li><a href="#">Upcoming Events</a></li>
+          <li><a href="#">Department Announcements</a></li>
+          <li><a href="#">Student Achievements</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="nav-item">More <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Da Ai TV</a></li>
+          <li><a href="#">Tzu Chi University Main Website</a></li>
+          <li><a href="#">Useful Links</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="search-icon-btn" aria-label="Search" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="lang-pill-btn" onclick="toggleLanguage()">中文</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= ISI ASLI DEPARTMENT HISTORY ================= -->
+<main class="wrap">
+<div class="crumb">About <span>/</span> Department History</div>
+<div class="masthead">
+<div>
+<div class="kicker">The department archive</div>
+<h1>Department History</h1>
+</div>
+<p>
+<span class="range">2000 — 2024</span>Different chapters. One evolving story.<br>Explore the milestones that shaped us.</p>
+</div>
+<div class="archive">
+<aside>
+<div class="index-label">Select a chapter</div>
+<div class="timeline" role="tablist" aria-label="Department history milestones" aria-orientation="vertical">
+<button class="year-tab" role="tab" id="year-tab-0" aria-controls="chapter-panel" aria-selected="true" tabindex="0">
+<strong>2000</strong>
+<small>Foundations</small>
+</button>
+<button class="year-tab" role="tab" id="year-tab-1" aria-controls="chapter-panel" aria-selected="false" tabindex="-1">
+<strong>2004</strong>
+<small>Digital shift</small>
+</button>
+<button class="year-tab" role="tab" id="year-tab-2" aria-controls="chapter-panel" aria-selected="false" tabindex="-1">
+<strong>2013</strong>
+<small>New direction</small>
+</button>
+<button class="year-tab" role="tab" id="year-tab-3" aria-controls="chapter-panel" aria-selected="false" tabindex="-1">
+<strong>2023</strong>
+<small>Broader horizons</small>
+</button>
+<button class="year-tab" role="tab" id="year-tab-4" aria-controls="chapter-panel" aria-selected="false" tabindex="-1">
+<strong>2024</strong>
+<small>A new chapter</small>
+</button>
+</div>
+<p class="index-note">A name may change.<br>A commitment to education continues.</p>
+</aside>
+<div class="journal-wrap">
+<div class="journal" id="chapter-panel" role="tabpanel" aria-labelledby="year-tab-0" tabindex="0">
+<div class="journal-header">
+<span>Business Management / TCU</span>
+<span class="date-range" id="chapter-label">Chapter 01 / 05</span>
+</div>
+<div class="chapter">
+<div class="story">
+<div class="year" id="chapter-year">2000</div>
+<div class="era" id="chapter-era">The accounting roots</div>
+<div class="topic" id="chapter-topic">The beginning</div>
+<h2 id="chapter-title">Every journey starts somewhere.</h2>
+<p id="chapter-description">A four-year Accounting program was introduced, laying the foundation for the department’s academic journey.</p>
+</div>
+<div class="illustration">
+<div class="stamp" aria-hidden="true">FROM THE ARCHIVE</div>
+<svg id="chapter-art" viewBox="0 0 260 230" fill="none" aria-hidden="true">
+<ellipse cx="130" cy="204" rx="79" ry="9" fill="#dcebd1"/>
+<g transform="rotate(-8 130 115)">
+<rect x="68" y="32" width="119" height="166" rx="12" fill="#fcfefb" stroke="#719065" stroke-width="1.5"/>
+<rect x="68" y="32" width="17" height="166" rx="7" fill="#527651"/>
+<path d="M103 70h62M103 85h43M103 112h62m-62 17h62m-62 17h62m-41-42v58" stroke="#b8c7a4" stroke-width="2"/>
+<rect x="103" y="104" width="62" height="58" rx="3" stroke="#a3b48e"/>
+<path d="m107 42 2-17m17 17 2-17m17 17 2-17m17 17 2-17" stroke="#a3c68e" stroke-width="3" stroke-linecap="round"/>
+</g>
+<path d="m189 114 12 3-17 64-12-3Z" fill="#add096"/>
+<path d="m172 178 3 17 9-14" fill="#68875a"/>
+<path d="M38 87h13m-6-6v12M202 54h13m-6-6v12" stroke="#a8c799" stroke-width="1.5"/>
+</svg>
+<div class="art-caption" id="art-caption">A foundation for the future</div>
+</div>
+</div>
+<div class="journal-bottom">
+<a id="chapter-source" class="source-link" href="https://edurp.tcu.edu.tw/CLM/CLM_detail_coll.aspx?a=115&amp;b=TCU&amp;c=USMDM&amp;d=CM&amp;e=N&amp;f=2" target="_blank" rel="noopener">Read the official record ↗</a>
+<div class="controls">
+<span class="position" id="position" aria-live="polite" aria-atomic="true">01 / 05</span>
+<button id="previous" class="control" type="button" aria-label="Previous milestone">←</button>
+<button id="next" class="control" type="button" aria-label="Next milestone">→</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>Milestones adapted from the university’s academic history and merger announcement.</p>
+<a href="vision.html">Vision & Mission ↗</a>
+</div>
+<noscript>
+<section>
+<h2>Department history</h2>
+<p>2000: Accounting program introduced. 2004: Renamed Accounting Information. 2013: Renamed Marketing and Distribution Management. 2023: Renamed Business Management. 2024: Tzu Chi University of Science and Technology merged with Tzu Chi University.</p>
+</section>
+</noscript>
+</main>
+
+<!-- JavaScript: data sejarah, navigasi tahun, dan fungsi navbar -->
+<script src="translations.js"></script>
+<script>
+// Efek Bayangan Navbar saat Scroll & Bahasa
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 40) {
+    navbar.style.boxShadow = '0 6px 20px rgba(18, 48, 39, 0.08)';
+    navbar.style.padding = '12px 5%';
+  } else {
+    navbar.style.boxShadow = '0 1px 0 rgba(0, 0, 0, 0.06)';
+    navbar.style.padding = '16px 5%';
+  }
+});
+
+// Logika Asli Department History
+const artStart=document.getElementById('chapter-art').innerHTML;
+const shadow='<ellipse cx="130" cy="204" rx="79" ry="9" fill="#dcebd1"/>';
+const chapters=[
+{year:'2000',era:'The accounting roots',topic:'The beginning',title:'Every journey starts somewhere.',description:'A four-year Accounting program was introduced, laying the foundation for the department’s academic journey.',source:'https://edurp.tcu.edu.tw/CLM/CLM_detail_coll.aspx?a=115&b=TCU&c=USMDM&d=CM&e=N&f=2',caption:'A foundation for the future',art:artStart},
+{"year": "2004", "era": "Accounting Information", "topic": "The digital shift", "title": "Accounting meets information technology.", "description": "The department was renamed Accounting Information to prepare accounting professionals for a changing technological environment.", "source": "https://edurp.tcu.edu.tw/CLM/CLM_detail_coll.aspx?a=115&b=TCU&c=USMDM&d=CM&e=N&f=2", "caption": "Knowledge for a connected world", "art": "<ellipse cx=\"130\" cy=\"204\" rx=\"79\" ry=\"9\" fill=\"#dcebd1\"/><rect x=\"42\" y=\"43\" width=\"176\" height=\"122\" rx=\"9\" fill=\"#ffffff\" stroke=\"#74915f\" stroke-width=\"1.5\"/><rect x=\"52\" y=\"53\" width=\"156\" height=\"99\" rx=\"4\" fill=\"#e2eed9\"/><path d=\"M130 166v24m-34 8h68\" stroke=\"#75925e\" stroke-width=\"5\" stroke-linecap=\"round\"/><rect x=\"67\" y=\"69\" width=\"79\" height=\"64\" rx=\"4\" fill=\"#fcfefb\" stroke=\"#9bb486\"/><path d=\"M77 82h57m-57 13h57m-57 13h57m-38-31v42m19-42v42\" stroke=\"#b5c7a1\" stroke-width=\"1.5\"/><path d=\"m158 92 8 8 16-18\" stroke=\"#658d52\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"177\" cy=\"50\" r=\"19\" fill=\"#b4d49f\"/><path d=\"M169 50h16m-8-8v16\" stroke=\"#ffffff\" stroke-width=\"1.5\"/>"},
+{year:'2013',era:'Marketing & Distribution Management',topic:'A new direction',title:'A new name. A different perspective.',description:'The Department of Accounting Information was renamed the Department of Marketing and Distribution Management.',source:'https://edurp.tcu.edu.tw/CLM/CLM_detail_coll.aspx?a=115&b=TCU&c=USMDM&d=CM&e=N&f=2',caption:'Connecting ideas and people',art:shadow+'<rect x="53" y="98" width="152" height="105" rx="8" fill="#fcfefb" stroke="#759266" stroke-width="1.5"/><path d="m52 98 17-42h121l17 42" fill="#d5e7c7" stroke="#759266" stroke-width="1.5"/><path d="m91 56-9 42m40-42-2 42m39-42 6 42" stroke="#f5faf0" stroke-width="17"/><path d="M52 98v8c0 15 29 15 29 0 0 15 32 15 32 0 0 15 33 15 33 0 0 15 33 15 33 0 0 15 29 15 29 0v-8" fill="#8da779" stroke="#759266" stroke-width="1.5"/><rect x="73" y="132" width="57" height="43" rx="5" fill="#e5f0dc" stroke="#a7b993"/><rect x="148" y="133" width="35" height="70" rx="4" fill="#c3d2ae"/><circle cx="174" cy="170" r="2" fill="#658455"/><path d="M65 188h64M109 36h38" stroke="#9bbf83" stroke-width="2" stroke-linecap="round"/><circle cx="203" cy="45" r="5" fill="#b6d3a6"/>'},
+{year:'2023',era:'Business Management',topic:'Broader horizons',title:'Room for a broader ambition.',description:'The department was renamed Business Management, opening a new chapter in its evolving academic identity.',source:'https://edurp.tcu.edu.tw/CLM/CLM_detail_coll.aspx?a=115&b=TCU&c=USMDM&d=CM&e=N&f=2',caption:'A broader view of business',art:shadow+'<circle cx="130" cy="115" r="73" fill="#e0efd6" stroke="#c5ddb5"/><path d="M130 51v127M67 115h126" stroke="#b4c59d" stroke-width="1.5"/><circle cx="130" cy="115" r="38" fill="#fbfef9" stroke="#7e9a6b" stroke-width="1.5"/><path d="m116 122 13-14 13 8 18-24m-12 0h12v12" stroke="#4e7650" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="45" y="77" width="39" height="39" rx="11" fill="#8aa578"/><rect x="169" y="132" width="39" height="39" rx="11" fill="#afcd9b"/><circle cx="169" cy="53" r="21" fill="#c5d5ae"/><circle cx="86" cy="170" r="21" fill="#fcfefb" stroke="#a4b890"/><path d="M57 89h15m-15 7h15M181 153h15m-8-7v14M162 53h14m-7-7v14M78 174l5-8 6 6 7-10" stroke="#f7fcf3" stroke-width="2" stroke-linecap="round"/><path d="m78 174 5-8 6 6 7-10" stroke="#729063" stroke-width="2" fill="none"/>'},
+{year:'2024',era:'A new chapter at Tzu Chi University',topic:'Coming together',title:'Stronger roots. New possibilities.',description:'On August 1, Tzu Chi University of Science and Technology merged with Tzu Chi University. The department continued its journey as part of the unified TCU.',source:'https://admissions.tcu.edu.tw/?p=23054',caption:'Growing together at TCU',art:shadow+'<path d="m53 98 77-46 77 46" fill="#bdcdac" stroke="#719065" stroke-width="1.5" stroke-linejoin="round"/><path d="M64 103h132v89H64Z" fill="#fbfef9" stroke="#719065" stroke-width="1.5"/><path d="M49 194h162m-168 8h174" stroke="#819b6c" stroke-width="3" stroke-linecap="round"/><path d="M83 117v63m31-63v63m32-63v63m31-63v63" stroke="#cde3bf" stroke-width="12"/><path d="M76 115h108M76 182h108" stroke="#7f9b6c" stroke-width="3" stroke-linecap="round"/><circle cx="130" cy="82" r="9" fill="#edf6e7"/><path d="M130 49V24l25 8-25 9" fill="#a6c88f" stroke="#a6c88f" stroke-width="1.5"/><path d="M31 186v-41m0 18c-11 0-17-7-17-17 12 0 17 8 17 17m0-8c12 0 18-8 18-18-12 0-18 8-18 18M228 190v-31m0 15c-10 0-14-6-14-14 10 0 14 7 14 14m0-6c10 0 15-7 15-15-10 0-15 7-15 15" fill="#acc197" stroke="#7c9c68" stroke-width="1.5"/>'}
+];
+let selected=0;const tabs=[...document.querySelectorAll('[role=tab]')];const panel=document.getElementById('chapter-panel');
+function selectChapter(index,focus=false){selected=(index+chapters.length)%chapters.length;const c=chapters[selected];const text=value=>window.translateText(value);tabs.forEach((t,i)=>{t.setAttribute('aria-selected',String(i===selected));t.tabIndex=i===selected?0:-1});for(const [id,value] of Object.entries({'chapter-year':c.year,'chapter-era':text(c.era),'chapter-label':text('Chapter')+' '+String(selected+1).padStart(2,'0')+' / 05','chapter-topic':text(c.topic),'chapter-title':text(c.title),'chapter-description':text(c.description),'art-caption':text(c.caption),'position':String(selected+1).padStart(2,'0')+' / 05'}))document.getElementById(id).textContent=value;document.getElementById('chapter-source').href=c.source;document.getElementById('chapter-art').innerHTML=c.art;panel.setAttribute('aria-labelledby','year-tab-'+selected);panel.classList.remove('fade');void panel.offsetWidth;panel.classList.add('fade');if(focus)tabs[selected].focus()}
+tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>selectChapter(i));tab.addEventListener('keydown',e=>{let target=i;if(e.key==='ArrowRight'||e.key==='ArrowDown')target=i+1;else if(e.key==='ArrowLeft'||e.key==='ArrowUp')target=i-1;else if(e.key==='Home')target=0;else if(e.key==='End')target=chapters.length-1;else return;e.preventDefault();selectChapter(target,true)})});document.getElementById('previous').addEventListener('click',()=>selectChapter(selected-1));document.getElementById('next').addEventListener('click',()=>selectChapter(selected+1));window.addEventListener('website-language-changed',()=>selectChapter(selected));selectChapter(selected);
+</script>
+</body>
+</html>

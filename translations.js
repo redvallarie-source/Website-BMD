@@ -5,6 +5,47 @@
         'Department Introduction': '系所介紹',
         'Mission & Vision': '使命與願景',
         'Department History': '系所沿革',
+        'The department archive': '系所沿革檔案',
+        'Different chapters. One evolving story.': '不同的篇章，同一段持續演進的故事。',
+        'Explore the milestones that shaped us.': '探索塑造本系的重要里程碑。',
+        'Select a chapter': '選擇篇章',
+        'Foundations': '奠定基礎',
+        'Digital shift': '數位轉型',
+        'New direction': '全新方向',
+        'Broader horizons': '拓展視野',
+        'A new chapter': '嶄新篇章',
+        'A name may change.': '名稱或許會改變。',
+        'A commitment to education continues.': '對教育的承諾始終如一。',
+        'Business Management / TCU': '慈濟大學企業管理學系',
+        'Chapter': '篇章',
+        'The accounting roots': '會計的起點',
+        'The beginning': '故事的開始',
+        'Every journey starts somewhere.': '每段旅程都有起點。',
+        'A four-year Accounting program was introduced, laying the foundation for the department’s academic journey.': '設立四年制會計學系，為本系的學術發展奠定基礎。',
+        'A foundation for the future': '奠定未來的基礎',
+        'Accounting Information': '會計資訊學系',
+        'Accounting meets information technology.': '會計與資訊科技的結合。',
+        'The department was renamed Accounting Information to prepare accounting professionals for a changing technological environment.': '本系更名為會計資訊學系，培育能因應科技環境變遷的會計專業人才。',
+        'Knowledge for a connected world': '連結世界的知識',
+        'Marketing & Distribution Management': '行銷與流通管理學系',
+        'A new name. A different perspective.': '更名啟新，視野也隨之拓展。',
+        'The Department of Accounting Information was renamed the Department of Marketing and Distribution Management.': '會計資訊學系更名為行銷與流通管理學系。',
+        'Connecting ideas and people': '連結理念與人群',
+        'Room for a broader ambition.': '開啟更寬廣的發展。',
+        'The department was renamed Business Management, opening a new chapter in its evolving academic identity.': '本系更名為企業管理學系，開啟學術發展的新篇章。',
+        'A broader view of business': '拓展商業視野',
+        'A new chapter at Tzu Chi University': '慈濟大學的新篇章',
+        'Coming together': '攜手同行',
+        'Stronger roots. New possibilities.': '扎根更深，開創更多可能。',
+        'On August 1, Tzu Chi University of Science and Technology merged with Tzu Chi University. The department continued its journey as part of the unified TCU.': '8月1日，慈濟科技大學與慈濟大學合併。本系也在整合後的慈濟大學持續發展。',
+        'Growing together at TCU': '在慈濟大學共同成長',
+        'Read the official record ↗': '閱讀官方紀錄 ↗',
+        'Previous milestone': '上一個里程碑',
+        'Next milestone': '下一個里程碑',
+        'Department history milestones': '系所歷史里程碑',
+        'Milestones adapted from the university’s academic history and merger announcement.': '本頁里程碑內容改編自本校系所沿革與合併公告。',
+        'Vision & Mission ↗': '願景與使命 ↗',
+        'Department history': '系所沿革',
         'FB Forum': 'FB 論壇',
         'Social Media': '社群媒體',
         'Academics': '學術課程',
@@ -161,7 +202,8 @@
     const titleInChinese = {
         'Tzu Chi University | Business Management': '慈濟大學｜企業管理學系',
         'About - Department of Business Management | Tzu Chi University': '關於我們－企業管理學系｜慈濟大學',
-        'Vision & Mission · TCU Business Management': '願景與使命 · 慈濟大學企業管理學系'
+        'Vision & Mission · TCU Business Management': '願景與使命 · 慈濟大學企業管理學系',
+        'Department History · TCU Business Management': '系所沿革 · 慈濟大學企業管理學系'
     }[titleInEnglish];
     const languageButton = document.querySelector('.lang-pill-btn');
 
@@ -194,7 +236,12 @@
         languageButton.textContent = isChinese ? 'EN' : '中文';
         languageButton.setAttribute('aria-label', isChinese ? 'Switch to English' : '切換為中文');
         languageButton.title = isChinese ? 'Switch to English' : '切換為中文';
+        window.dispatchEvent(new CustomEvent('website-language-changed', { detail: { language } }));
     }
+
+    window.translateText = function(text) {
+        return document.documentElement.lang === 'zh-Hant' ? (translations[text] || text) : text;
+    };
 
     window.toggleLanguage = function() {
         const nextLanguage = document.documentElement.lang === 'zh-Hant' ? 'en' : 'zh-Hant';
