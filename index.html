@@ -102,7 +102,7 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover;
-            background-position: center right;
+            background-position: right 60%;
             opacity: 0;
             transition: opacity 1s ease-in-out, transform 4s ease-in-out;
             transform: scale(1.05); /* Efek zoom in pelan */
@@ -216,6 +216,74 @@
         .about-quote-text { font-size: 0.95rem; line-height: 1.55; font-style: italic; font-weight: 300; color: #f0f6f3; margin-bottom: 18px; }
         .about-quote-line { width: 34px; height: 2px; background-color: rgba(255, 255, 255, 0.7); border-radius: 2px; }
         .bg-botanical-leaf { position: absolute; bottom: -50px; right: -45px; width: 140px; height: 140px; opacity: 0.22; pointer-events: none; z-index: 0; color: var(--tc-green); }
+
+        .home-highlights { padding: 72px 5% 90px; background: #f4f8f5; }
+        .highlights-inner { max-width: 1180px; margin: 0 auto; }
+        .highlights-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; }
+        .highlights-kicker { color: var(--text-muted); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+        .highlights-title { color: var(--text-heading); font: 600 clamp(2rem, 3.5vw, 3rem)/1.1 var(--font-display); }
+        .highlights-intro { max-width: 390px; color: var(--text-muted); font-size: 0.88rem; }
+        .highlights-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; align-items: start; }
+        .highlights-grid > * { min-width: 0; }
+        .achievement-panel, .events-panel { background: var(--white); border: 1px solid #e1eae4; border-radius: 18px; box-shadow: 0 12px 32px rgba(18, 48, 39, 0.05); }
+        .achievement-panel { padding: 25px; }
+        .panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
+        .panel-heading h3 { color: var(--text-heading); font: 600 1.55rem/1.15 var(--font-display); }
+        .panel-eyebrow { color: var(--tc-green); font-size: 0.68rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+        .achievement-feature { display: grid; grid-template-columns: minmax(180px, 0.82fr) 1fr; gap: 22px; align-items: center; padding: 0 0 21px; border-bottom: 1px solid #e9efeb; }
+        .achievement-poster { display: block; width: 100%; height: 300px; object-fit: contain; background: #faf7f4; border-radius: 10px; }
+        .award-ribbon { display: inline-flex; align-items: center; gap: 7px; color: #926e28; background: #fbf5e8; border-radius: 999px; padding: 7px 11px; font-size: 0.7rem; font-weight: 600; margin-bottom: 12px; }
+        .achievement-feature h4, .achievement-item h4 { color: var(--text-heading); font: 600 1.25rem/1.25 var(--font-display); margin-bottom: 8px; }
+        .achievement-feature p, .achievement-item p { color: var(--text-body); font-size: 0.82rem; line-height: 1.65; }
+        .achievement-source { display: inline-flex; align-items: center; gap: 7px; color: var(--tc-green); font-size: 0.78rem; font-weight: 600; margin-top: 13px; }
+        .achievement-source:hover { gap: 11px; }
+        .achievement-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding-top: 20px; }
+        .achievement-item { padding-left: 14px; border-left: 2px solid #d5e4d9; }
+        .achievement-item .award-ribbon { margin-bottom: 9px; }
+        .events-panel { padding: 30px; border-top: 2px solid var(--tc-green); }
+        .agenda-heading { display: flex; justify-content: space-between; align-items: end; gap: 22px; margin-bottom: 22px; }
+        .agenda-heading h3 { color: var(--text-heading); font: 600 1.8rem/1.1 var(--font-display); margin-top: 6px; }
+        .agenda-description { max-width: 520px; color: var(--text-muted); font-size: 0.84rem; margin-top: 8px; }
+        .agenda-download { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; color: var(--tc-green); font-size: 0.8rem; font-weight: 600; }
+        .agenda-download:hover { gap: 13px; }
+        .agenda-months { display: flex; min-width: 0; max-width: 100%; gap: 7px; overflow-x: auto; padding: 0 0 14px; border-bottom: 1px solid #dce6e0; scrollbar-width: thin; }
+        .agenda-month-button { flex: 0 0 auto; padding: 8px 13px; border: 1px solid transparent; border-radius: 999px; background: transparent; color: var(--text-muted); font: 500 0.76rem var(--font-ui); cursor: pointer; transition: background-color 0.2s, color 0.2s; }
+        .agenda-month-button:hover { color: var(--tc-green); background: #f2f6f3; }
+        .agenda-month-button[aria-pressed="true"] { background: var(--tc-green); color: var(--white); }
+        .agenda-active-month { margin: 22px 0 4px; color: var(--text-heading); font: 600 1.4rem/1.2 var(--font-display); }
+        .agenda-event-list { border-top: 1px solid #e7ede9; }
+        .agenda-event { display: grid; grid-template-columns: 82px minmax(0, 1fr) auto; align-items: center; gap: 18px; padding: 17px 4px; border-bottom: 1px solid #e7ede9; }
+        .agenda-event[hidden] { display: none; }
+        .agenda-date { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 58px; border-right: 1px solid #dce6e0; color: var(--tc-green); }
+        .agenda-date span { font-size: 0.62rem; font-weight: 700; letter-spacing: 1.3px; }
+        .agenda-date strong { font: 600 1.5rem/1.1 var(--font-display); }
+        .agenda-event h4 { color: var(--text-heading); font: 600 1.12rem/1.25 var(--font-display); margin-bottom: 4px; }
+        .agenda-event p { color: var(--text-muted); font-size: 0.76rem; line-height: 1.5; }
+        .agenda-kind { color: var(--tc-green); background: #eef4f0; padding: 6px 10px; border-radius: 999px; font-size: 0.64rem; font-weight: 600; white-space: nowrap; }
+        .agenda-empty { padding: 24px 4px; color: var(--text-muted); font-size: 0.84rem; }
+        .agenda-empty[hidden] { display: none; }
+        @media (max-width: 850px) {
+            .home-highlights { padding: 58px 5% 68px; }
+            .highlights-grid { grid-template-columns: minmax(0, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .floating-card { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 0; padding: 24px 10px; }
+            .floating-col { padding: 0 10px; }
+            .floating-col:nth-child(2)::after { display: none; }
+            .bg-botanical-leaf { right: 0; width: 100px; }
+            .highlights-heading { display: block; }
+            .highlights-intro { margin-top: 12px; }
+            .achievement-panel { padding: 18px; }
+            .events-panel { padding: 22px 18px; }
+            .achievement-feature { grid-template-columns: 1fr; }
+            .achievement-poster { max-height: 320px; object-fit: contain; background: #faf7f4; }
+            .achievement-list { grid-template-columns: 1fr; }
+            .agenda-heading { display: block; }
+            .agenda-download { margin-top: 13px; }
+            .agenda-event { grid-template-columns: 62px minmax(0, 1fr); gap: 13px; }
+            .agenda-date { min-height: 54px; }
+            .agenda-kind { grid-column: 2; justify-self: start; margin-top: -5px; }
+        }
 
     </style>
 </head>
@@ -402,6 +470,161 @@
         </div>
     </section>
 
+    <section class="home-highlights" aria-labelledby="highlights-title">
+        <div class="highlights-inner">
+            <div class="highlights-heading">
+                <div>
+                    <div class="highlights-kicker">Campus life & student success</div>
+                    <h2 class="highlights-title" id="highlights-title">What's happening</h2>
+                </div>
+                <p class="highlights-intro">A quick look at student achievements and the latest department updates.</p>
+            </div>
+
+            <div class="highlights-grid">
+                <section class="achievement-panel" aria-labelledby="achievements-title">
+                    <div class="panel-heading">
+                        <h3 id="achievements-title">Student achievements</h3>
+                        <span class="panel-eyebrow">Proud moments</span>
+                    </div>
+                    <article class="achievement-feature">
+                        <img class="achievement-poster" src="assets/sustainsort-third-place.png" alt="SustainSort team wins third place for its AI One Drop Smart Waste Sorting Bin proposal">
+                        <div>
+                            <span class="award-ribbon"><i class="fa-solid fa-award" aria-hidden="true"></i> 3rd place · Proposal competition</span>
+                            <h4>SustainSort: AI One Drop Smart Waste Sorting Bin</h4>
+                            <p>Business Management students earned third place in Tzu Chi University's 6th “Maker + Are You Ready?” Proposal Competition.</p>
+                            <a class="achievement-source" href="https://mdm.tcu.edu.tw/p/406-1021-65682,r1.php?Lang=en" target="_blank" rel="noopener">Read the official announcement <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+                    <div class="achievement-list">
+                        <article class="achievement-item">
+                            <span class="award-ribbon"><i class="fa-solid fa-medal" aria-hidden="true"></i> 2nd place · 2025</span>
+                            <h4>National Business & Management Project Competition</h4>
+                            <p>A student team received second place in the Management Category for a feasibility study on using black soldier fly larvae to treat sludge waste.</p>
+                            <a class="achievement-source" href="https://mdm.tcu.edu.tw/p/406-1021-65256,r1.php?Lang=en" target="_blank" rel="noopener">Official announcement <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                        </article>
+                        <article class="achievement-item">
+                            <span class="award-ribbon"><i class="fa-solid fa-medal" aria-hidden="true"></i> Honorable mention · 2025</span>
+                            <h4>National Business & Management Project Competition</h4>
+                            <p>Students were recognized in the Management Category for a project exploring generative AI-assisted design of educational training test questions.</p>
+                            <a class="achievement-source" href="https://mdm.tcu.edu.tw/p/406-1021-65248,r1.php?Lang=en" target="_blank" rel="noopener">Official announcement <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="events-panel" aria-labelledby="events-title">
+                    <div class="agenda-heading">
+                        <div>
+                            <div class="panel-eyebrow">Official university dates</div>
+                            <h3 id="events-title" class="panel-heading-title">Academic calendar</h3>
+                            <p class="agenda-description">Key academic dates and university events for the 2026–2027 academic year, based on Tzu Chi University's official calendar.</p>
+                        </div>
+                        <a class="agenda-download" href="assets/academic-calendar-2026-2027.pdf" target="_blank" rel="noopener">Download the full academic calendar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="agenda-months" role="group" aria-label="Choose a calendar month">
+                        <button class="agenda-month-button" type="button" data-month="2026-10">October</button>
+                        <button class="agenda-month-button" type="button" data-month="2026-11">November</button>
+                        <button class="agenda-month-button" type="button" data-month="2026-12">December</button>
+                        <button class="agenda-month-button" type="button" data-month="2027-01">January</button>
+                        <button class="agenda-month-button" type="button" data-month="2027-02">February</button>
+                        <button class="agenda-month-button" type="button" data-month="2027-03">March</button>
+                        <button class="agenda-month-button" type="button" data-month="2027-04">April</button>
+                        <button class="agenda-month-button" type="button" data-month="2027-05">May</button>
+                        <button class="agenda-month-button" type="button" data-month="2027-06">June</button>
+                    </div>
+                    <h4 class="agenda-active-month" id="agenda-active-month" aria-live="polite">October 2026</h4>
+                    <div class="agenda-event-list" id="agenda-events">
+                        <article class="agenda-event" data-month="2026-10" data-start="2026-10-25">
+                            <time class="agenda-date" datetime="2026-10-25"><span>OCT</span><strong>25–26</strong></time>
+                            <div><h4>University holiday: Taiwan Commemoration Day</h4><p>October 26 is the day off for holiday observance.</p></div>
+                            <span class="agenda-kind">University holiday</span>
+                        </article>
+                        <article class="agenda-event" data-month="2026-11" data-start="2026-11-02">
+                            <time class="agenda-date" datetime="2026-11-02"><span>NOV</span><strong>02–06</strong></time>
+                            <div><h4>Midterm examination week</h4><p>First-semester midterm exams.</p></div>
+                            <span class="agenda-kind">Academic milestone</span>
+                        </article>
+                        <article class="agenda-event" data-month="2026-11" data-start="2026-11-12">
+                            <time class="agenda-date" datetime="2026-11-12"><span>NOV</span><strong>12–15</strong></time>
+                            <div><h4>Tzu Chi 60th Anniversary Sutra Adaptation</h4><p>University anniversary event listed in the academic calendar.</p></div>
+                            <span class="agenda-kind">University event</span>
+                        </article>
+                        <article class="agenda-event" data-month="2026-11" data-start="2026-11-25">
+                            <time class="agenda-date" datetime="2026-11-25"><span>NOV</span><strong>25</strong></time>
+                            <div><h4>University Sports Day</h4><p>No classes.</p></div>
+                            <span class="agenda-kind">University event</span>
+                        </article>
+                        <article class="agenda-event" data-month="2026-11" data-start="2026-11-27">
+                            <time class="agenda-date" datetime="2026-11-27"><span>NOV</span><strong>27</strong></time>
+                            <div><h4>Two-thirds of the semester completed</h4><p>First-semester academic milestone.</p></div>
+                            <span class="agenda-kind">Academic milestone</span>
+                        </article>
+                        <article class="agenda-event" data-month="2026-12" data-start="2026-12-25">
+                            <time class="agenda-date" datetime="2026-12-25"><span>DEC</span><strong>25</strong></time>
+                            <div><h4>Constitution Day</h4><p>University holiday.</p></div>
+                            <span class="agenda-kind">University holiday</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-01" data-start="2027-01-04">
+                            <time class="agenda-date" datetime="2027-01-04"><span>JAN</span><strong>04–08</strong></time>
+                            <div><h4>Final examination week</h4><p>First-semester final exams.</p></div>
+                            <span class="agenda-kind">Academic milestone</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-01" data-start="2027-01-11">
+                            <time class="agenda-date" datetime="2027-01-11"><span>JAN</span><strong>11</strong></time>
+                            <div><h4>Winter break begins</h4><p>First semester ends on January 31.</p></div>
+                            <span class="agenda-kind">Semester break</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-01" data-start="2027-01-31">
+                            <time class="agenda-date" datetime="2027-01-31"><span>JAN</span><strong>31</strong></time>
+                            <div><h4>Fall semester ends</h4><p>End of the first semester.</p></div>
+                            <span class="agenda-kind">Academic milestone</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-02" data-start="2027-02-22">
+                            <time class="agenda-date" datetime="2027-02-22"><span>FEB</span><strong>22</strong></time>
+                            <div><h4>Second semester begins</h4><p>First day of classes.</p></div>
+                            <span class="agenda-kind">Academic milestone</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-02" data-start="2027-02-28">
+                            <time class="agenda-date" datetime="2027-02-28"><span>FEB</span><strong>28</strong></time>
+                            <div><h4>Peace Memorial Day</h4><p>University holiday.</p></div>
+                            <span class="agenda-kind">University holiday</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-03" data-start="2027-03-08">
+                            <time class="agenda-date" datetime="2027-03-08"><span>MAR</span><strong>08–12</strong></time>
+                            <div><h4>Late course add period</h4><p>Paper applications for late course additions.</p></div>
+                            <span class="agenda-kind">Academic milestone</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-04" data-start="2027-04-19">
+                            <time class="agenda-date" datetime="2027-04-19"><span>APR</span><strong>19–23</strong></time>
+                            <div><h4>Midterm examination week</h4><p>Second-semester midterm exams.</p></div>
+                            <span class="agenda-kind">Academic milestone</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-05" data-start="2027-05-01">
+                            <time class="agenda-date" datetime="2027-05-01"><span>MAY</span><strong>01</strong></time>
+                            <div><h4>Labor Day</h4><p>University holiday.</p></div>
+                            <span class="agenda-kind">University holiday</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-06" data-start="2027-06-09">
+                            <time class="agenda-date" datetime="2027-06-09"><span>JUN</span><strong>09</strong></time>
+                            <div><h4>Dragon Boat Festival</h4><p>University holiday.</p></div>
+                            <span class="agenda-kind">University holiday</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-06" data-start="2027-06-12">
+                            <time class="agenda-date" datetime="2027-06-12"><span>JUN</span><strong>12</strong></time>
+                            <div><h4>Commencement ceremony</h4><p>University graduation ceremony.</p></div>
+                            <span class="agenda-kind">University event</span>
+                        </article>
+                        <article class="agenda-event" data-month="2027-06" data-start="2027-06-21">
+                            <time class="agenda-date" datetime="2027-06-21"><span>JUN</span><strong>21–25</strong></time>
+                            <div><h4>Final examination week</h4><p>Second-semester final exams.</p></div>
+                            <span class="agenda-kind">Academic milestone</span>
+                        </article>
+                    </div>
+                    <p class="agenda-empty" id="agenda-empty" hidden>No listed dates for this month.</p>
+                </section>
+            </div>
+        </div>
+    </section>
+
     <!-- ================= INTERNAL JAVASCRIPT ================= -->
     <script>
         // 1. Efek Navbar Shadow saat Scroll
@@ -462,5 +685,57 @@
         slideInterval = setInterval(nextSlide, 5000);
     </script>
     <script src="translations.js"></script>
+    <script>
+        (() => {
+            const monthButtons = [...document.querySelectorAll('.agenda-month-button')];
+            const events = [...document.querySelectorAll('.agenda-event')];
+            const activeMonth = document.querySelector('#agenda-active-month');
+            const emptyState = document.querySelector('#agenda-empty');
+            const monthLabels = {
+                '2026-10': 'October 2026',
+                '2026-11': 'November 2026',
+                '2026-12': 'December 2026',
+                '2027-01': 'January 2027',
+                '2027-02': 'February 2027',
+                '2027-03': 'March 2027',
+                '2027-04': 'April 2027',
+                '2027-05': 'May 2027',
+                '2027-06': 'June 2027'
+            };
+            const monthKeys = monthButtons.map(button => button.dataset.month);
+            const now = new Date();
+            const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+            const currentMonth = today.slice(0, 7);
+            const initialMonth = monthKeys.find(month => month >= currentMonth
+                && events.some(event => event.dataset.month === month && event.dataset.start >= today))
+                || monthKeys[monthKeys.length - 1];
+
+            function selectMonth(month) {
+                const selectedButton = monthButtons.find(button => button.dataset.month === month);
+                if (!selectedButton) return;
+
+                monthButtons.forEach(button => {
+                    button.setAttribute('aria-pressed', String(button === selectedButton));
+                });
+                let visibleCount = 0;
+                events.forEach(event => {
+                    const isVisible = event.dataset.month === month;
+                    event.hidden = !isVisible;
+                    if (isVisible) visibleCount += 1;
+                });
+                activeMonth.textContent = window.translateText(monthLabels[month]);
+                emptyState.hidden = visibleCount > 0;
+            }
+
+            monthButtons.forEach(button => {
+                button.addEventListener('click', () => selectMonth(button.dataset.month));
+            });
+            window.addEventListener('website-language-changed', () => {
+                const selectedButton = monthButtons.find(button => button.getAttribute('aria-pressed') === 'true');
+                if (selectedButton) activeMonth.textContent = window.translateText(monthLabels[selectedButton.dataset.month]);
+            });
+            selectMonth(initialMonth);
+        })();
+    </script>
 </body>
 </html>
