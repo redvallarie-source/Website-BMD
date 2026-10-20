@@ -38,11 +38,11 @@
 
         /* ================= 1. NAVBAR (TETAP SAMA) ================= */
         .navbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 5%; background-color: var(--white); position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06); transition: all 0.3s ease; }
-        .brand-container { display: flex; align-items: center; gap: 12px; }
-        .brand-logo-svg { width: 38px; height: 38px; color: var(--tc-green); }
-        .brand-text { font-family: var(--font-display); font-size: 1.45rem; font-weight: 700; color: var(--tc-green); display: flex; align-items: center; }
-        .brand-divider { margin: 0 14px; color: #b5c4bd; font-weight: 300; font-size: 1.2rem; }
-        .brand-sub { font-family: var(--font-ui); font-size: 0.95rem; font-weight: 500; color: #2d3e37; }
+        .brand-container { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+        .brand-logo { display: block; width: 160px; height: auto; }
+        .brand-text { display: flex; flex-direction: column; gap: 3px; }
+        .brand-title-zh { font-family: 'Noto Serif TC', 'Microsoft JhengHei', serif; font-size: 1.08rem; font-weight: 700; letter-spacing: 0.08em; color: #162d2b; white-space: nowrap; }
+        .brand-sub { font-family: var(--font-ui); font-size: 0.68rem; font-weight: 500; color: #535f5c; white-space: nowrap; }
 
         .nav-menu { display: flex; align-items: center; list-style: none; gap: 22px; }
         .nav-item { font-size: 0.88rem; font-weight: 500; color: #3b4b45; position: relative; padding: 8px 0; display: flex; align-items: center; gap: 5px; }
@@ -50,6 +50,18 @@
         .nav-item:hover, .nav-item.active { color: var(--tc-green); }
         .nav-item:hover i { color: var(--tc-green); }
         .nav-item.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--tc-green); border-radius: 2px; }
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+        }
+        @media (max-width: 650px) {
+            .navbar { padding: 12px 3% !important; gap: 8px; }
+            .brand-container { gap: 8px; }
+            .brand-logo { width: 88px; }
+            .brand-title-zh { font-size: 0.68rem; letter-spacing: 0.04em; }
+            .brand-sub { font-size: 0.44rem; }
+            .nav-right { gap: 8px; }
+            .lang-pill-btn { padding-left: 8px; padding-right: 8px; }
+        }
 
         .nav-right { display: flex; align-items: center; gap: 18px; }
         .search-icon-btn { background: none; border: none; color: #3b4b45; font-size: 0.95rem; cursor: pointer; padding: 6px; transition: color 0.2s ease; }
@@ -212,31 +224,22 @@
     <!-- 1. NAVIGATION BAR -->
     <header>
         <nav class="navbar">
-            <div class="brand-container">
-                <svg class="brand-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 3c-1.5 3-4 5.5-4 9a4 4 0 0 0 8 0c0-3.5-2.5-6-4-9z"/>
-                    <path d="M7 10c-2.5 1-4.5 3-5 6 3 .5 5.5-.5 7-2"/>
-                    <path d="M17 10c2.5 1 4.5 3 5 6-3 .5-5.5-.5-7-2"/>
-                    <path d="M9 18c-1.5 2-3 3-5 3 1.5-2 2-3.5 2-5"/>
-                    <path d="M15 18c1.5 2 3 3 5 3-1.5-2-2-3.5-2-5"/>
-                </svg>
+            <a class="brand-container" href="index.html">
+                <img class="brand-logo" src="assets/mdm_logo_new.png" alt="">
                 <div class="brand-text">
-                    Tzu Chi University
-                    <span class="brand-divider">|</span>
-                    <span class="brand-sub">Business Management</span>
+                    <span class="brand-title-zh">慈濟大學 經營管理學系</span>
+                    <span class="brand-sub">Department of Business Management</span>
                 </div>
-            </div>
+            </a>
 
             <!-- MENU DENGAN DROPDOWN -->
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-item active">Home</a></li>
                 <li class="dropdown"><a href="introduction.html" class="nav-item">About <i class="fa-solid fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="introduction.html">Department Introduction</a></li>
+                        <li><a href="introduction.html">Introduction</a></li>
                         <li><a href="vision.html">Mission & Vision</a></li>
-                        <li><a href="history.html">Department History</a></li>
-                        <li><a href="#">FB Forum</a></li>
-                        <li><a href="#">Social Media</a></li>
+                        <li><a href="history.html">History</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#" class="nav-item">Academics <i class="fa-solid fa-chevron-down"></i></a>
@@ -301,9 +304,9 @@
         <div class="hero-leaf-overlay"></div>
 
         <div class="hero-handwritten">
-            <span>Good People</span>
-            <span>Good Business</span>
-            <span>A Better World</span>
+            <span>Humanistic Values</span>
+            <span>Creative Thinking</span>
+            <span>Responsible Business</span>
             <div class="hero-handwritten-underline"></div>
         </div>
         <div class="campus-vertical-plaque">
@@ -312,17 +315,17 @@
         </div>
 
         <div class="hero-content">
-            <div class="hero-pretitle">Tzu Chi University</div>
+            <div class="hero-pretitle">Department of Business Management</div>
             <h1 class="hero-title">Business Management</h1>
-            <div class="hero-tagline">Cultivating compassionate leaders for a sustainable future.</div>
+            <div class="hero-tagline">Business knowledge grounded in humanistic values.</div>
             <p class="hero-description">
-                The Department of Business Management at Tzu Chi University nurtures students with professional knowledge, ethical values, and a global perspective — empowering them to create a positive impact in society and the world.
+                Develop the knowledge and capabilities to create social innovation, manage sustainably, understand industries, and make informed business decisions.
             </p>
             <div class="hero-buttons">
-                <a href="#about" class="btn-pill-primary">
-                    Explore Our Program <i class="fa-solid fa-arrow-right" style="font-size: 0.8rem;"></i>
+                <a href="https://mdm.tcu.edu.tw/p/412-1021-16.php?Lang=en" class="btn-pill-primary" target="_blank" rel="noopener">
+                    Explore Curriculum <i class="fa-solid fa-arrow-right" style="font-size: 0.8rem;"></i>
                 </a>
-                <a href="#about" class="btn-pill-secondary">About Us</a>
+                <a href="introduction.html" class="btn-pill-secondary">Department Introduction</a>
             </div>
         </div>
 
@@ -343,23 +346,23 @@
         <div class="floating-card">
             <div class="floating-col">
                 <div class="floating-col-icon"><i class="fa-solid fa-seedling"></i></div>
-                <div class="floating-col-title">Compassion & Integrity</div>
-                <div class="floating-col-desc">Build character, lead with heart.</div>
+                <div class="floating-col-title">Social Innovation</div>
+                <div class="floating-col-desc">Connect business with sustainable management.</div>
             </div>
             <div class="floating-col">
                 <div class="floating-col-icon"><i class="fa-regular fa-bookmark"></i></div>
-                <div class="floating-col-title">Quality Education</div>
-                <div class="floating-col-desc">Bridging theory and practice.</div>
+                <div class="floating-col-title">Operations & Industry</div>
+                <div class="floating-col-desc">Understand operations and analyze industries.</div>
             </div>
             <div class="floating-col">
-                <div class="floating-col-icon"><i class="fa-solid fa-globe"></i></div>
-                <div class="floating-col-title">Global Vision</div>
-                <div class="floating-col-desc">Think globally, act locally.</div>
+                <div class="floating-col-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="floating-col-title">Business & Finance</div>
+                <div class="floating-col-desc">Build knowledge and practical capabilities.</div>
             </div>
             <div class="floating-col">
-                <div class="floating-col-icon"><i class="fa-solid fa-people-roof"></i></div>
-                <div class="floating-col-title">Social Impact</div>
-                <div class="floating-col-desc">Business for a kinder world.</div>
+                <div class="floating-col-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="floating-col-title">Business Intelligence</div>
+                <div class="floating-col-desc">Apply insights to business decisions.</div>
             </div>
         </div>
     </div>
@@ -367,26 +370,26 @@
     <!-- 4. ABOUT SECTION -->
     <section class="about-section" id="about">
         <div class="about-left-col">
-            <div class="about-left-pretitle">About Our Department</div>
-            <h2 class="about-left-title">Learn · Grow · Make an Impact</h2>
+            <div class="about-left-pretitle">Our Learning Goals</div>
+            <h2 class="about-left-title">Five Distinctive Talents</h2>
             <p class="about-left-paragraph">
-                At Tzu Chi University's Business Management Department, we emphasise holistic education that combines academic excellence with compassion, sustainability, and real-world experience.
+                The department cultivates humanistic qualities, creative thinking, teamwork, a cross-cultural perspective, and workplace ethics.
             </p>
             <p class="about-left-paragraph">
-                Our goal is to develop future business leaders who care — for people, for society, and for the environment.
+                Students build business capabilities through social innovation and sustainable management, operations and industry analysis, business and finance, and business intelligence.
             </p>
-            <a href="#" class="btn-outline-rounded">
-                Learn More <i class="fa-solid fa-arrow-right" style="font-size: 0.78rem;"></i>
+            <a href="introduction.html" class="btn-outline-rounded">
+                Read Department Introduction <i class="fa-solid fa-arrow-right" style="font-size: 0.78rem;"></i>
             </a>
         </div>
         <div class="about-visual-wrap">
             <div class="about-accent-frame"></div>
             <img class="about-main-photo" 
                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" 
-                 alt="Students studying together on campus grass">
+                 alt="Students learning together outdoors">
             <div class="about-quote-card">
                 <div class="about-quote-text">
-                    “Business is not just about profit, but about creating a better future for all.”
+                 Humanistic qualities. Creative thinking. Teamwork. Cross-cultural perspective. Workplace ethics.
                 </div>
                 <div class="about-quote-line"></div>
             </div>
