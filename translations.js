@@ -75,6 +75,7 @@
         'Department of': '企業管理',
         'Vision & Mission': '願景與使命',
         'Students studying together on campus grass': '在校園草地上一起學習的學生',
+        'International students visiting a campus building': '國際學生參訪校園建築',
         'Students gathering on campus': '在校園聚會的學生',
         'Tzu Chi University': '慈濟大學',
         'Business Management': '企業管理學系',
