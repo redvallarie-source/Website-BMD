@@ -36,8 +36,9 @@
         body { font-family: var(--font-ui); color: var(--text-body); background-color: var(--bg-page); line-height: 1.65; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; transition: all 0.25s ease; }
 
-        /* ================= 1. NAVBAR (TETAP SAMA) ================= */
-        .navbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 5%; background-color: var(--white); position: sticky; top: 0; z-index: 1000; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06); transition: all 0.3s ease; }
+        /* ================= 1. NAVBAR ================= */
+        header { position: absolute; inset: 0 0 auto; z-index: 1000; }
+        .navbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 5%; background: linear-gradient(to bottom, rgba(252, 253, 252, 0.96), rgba(252, 253, 252, 0.72) 68%, rgba(252, 253, 252, 0)); position: relative; box-shadow: none; transition: padding 0.3s ease; }
         .brand-container { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
         .brand-logo { display: block; width: 160px; height: auto; }
         .brand-text { display: flex; flex-direction: column; gap: 3px; }
@@ -289,12 +290,36 @@
         .agenda-day.is-outside { color: #c7c7ca; }
         .agenda-day.is-outside.is-event { background: #f5f7f5; }
         .agenda-day:focus-visible, .agenda-calendar-nav:focus-visible { outline: 2px solid var(--tc-green); outline-offset: 2px; }
+        .site-footer { padding: 44px 5% 22px; background: linear-gradient(115deg, #173e35, #102d26); color: #f5f7f5; }
+        .footer-inner { max-width: 1240px; margin: 0 auto; }
+        .footer-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, 300px); gap: 48px; align-items: start; }
+        .footer-brand { display: flex; align-items: flex-start; gap: 20px; }
+        .footer-logo { display: block; width: 118px; height: auto; flex: 0 0 auto; border-radius: 7px; }
+        .footer-department { min-width: 0; }
+        .footer-university { display: block; margin-bottom: 4px; color: #fff; font-size: 1rem; font-weight: 600; }
+        .footer-department-name { margin-bottom: 15px; color: #e3eae5; font-size: 0.92rem; }
+        .footer-contact { display: grid; gap: 6px; color: #d4dfd8; font-size: 0.8rem; line-height: 1.6; }
+        .footer-contact p { padding-left: 10px; border-left: 2px solid #c6a86b; }
+        .footer-contact strong { color: #fff; font-weight: 600; }
+        .footer-contact a { color: inherit; }
+        .footer-contact a:hover { color: #ead9a9; }
+        .footer-legal { color: #d4dfd8; font-size: 0.82rem; line-height: 1.7; }
+        .footer-legal p + p { margin-top: 18px; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.38); }
+        .footer-socials { display: flex; align-items: center; gap: 12px; }
+        .footer-social-link { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: #fff; color: #173e35; font-size: 1.25rem; }
+        .footer-social-link:hover { transform: translateY(-2px); background: #ead9a9; color: #102d26; }
+        .footer-social-link:focus-visible, .footer-contact a:focus-visible { outline: 2px solid #ead9a9; outline-offset: 4px; }
+        .footer-copyright { color: #d4dfd8; font-size: 0.78rem; text-align: right; }
         @media (max-width: 850px) {
             .home-highlights { padding: 58px 5% 68px; }
             .highlights-grid { grid-template-columns: minmax(0, 1fr); }
             .agenda-dashboard { grid-template-columns: minmax(0, 1fr); }
             .agenda-sidebar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 1fr); border-left-width: 0; border-top: 5px solid var(--tc-green); }
             .agenda-promo { min-height: 100%; }
+            .footer-top { grid-template-columns: minmax(0, 1fr) 250px; gap: 28px; }
+            .footer-brand { gap: 14px; }
+            .footer-logo { width: 96px; }
         }
         @media (max-width: 600px) {
             .floating-card { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 0; padding: 24px 10px; }
@@ -315,6 +340,15 @@
             .agenda-sidebar { grid-template-columns: 1fr; }
             .agenda-promo { min-height: 145px; }
             .agenda-day { width: 34px; height: 34px; }
+            .site-footer { padding: 34px 5% 20px; }
+            .footer-top { grid-template-columns: 1fr; gap: 24px; }
+            .footer-brand { gap: 12px; }
+            .footer-logo { width: 78px; }
+            .footer-department-name { margin-bottom: 12px; }
+            .footer-contact { font-size: 0.76rem; }
+            .footer-legal p + p { margin-top: 8px; }
+            .footer-bottom { align-items: flex-start; flex-direction: column; gap: 14px; margin-top: 22px; padding-top: 16px; }
+            .footer-copyright { text-align: left; }
         }
 
     </style>
@@ -324,8 +358,8 @@
     <!-- 1. NAVIGATION BAR -->
     <header>
         <nav class="navbar">
-            <a class="brand-container" href="index.html">
-                <img class="brand-logo" src="assets/mdm_logo_new.png" alt="">
+            <a class="brand-container" href="https://tcueng.tcu.edu.tw/">
+                <img class="brand-logo" src="assets/mdm_logo_transparent.png" alt="">
                 <div class="brand-text">
                     <span class="brand-title-zh">慈濟大學 經營管理學系</span>
                     <span class="brand-sub">Department of Business Management</span>
@@ -683,20 +717,41 @@
         </div>
     </section>
 
+    <footer class="site-footer" aria-label="Department contact and copyright information">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="https://mdm.tcu.edu.tw/" target="_blank" rel="noopener" aria-label="Tzu Chi University Department of Business Management official website">
+                        <img class="footer-logo" src="assets/mdm_logo_transparent.png" alt="Tzu Chi University logo">
+                    </a>
+                    <div class="footer-department">
+                        <strong class="footer-university">Tzu Chi University, TCU</strong>
+                        <p class="footer-department-name">Department of Business Management</p>
+                        <div class="footer-contact">
+                            <p><strong>Address:</strong> 67 Jieren St., Hualien 97074, Taiwan</p>
+                            <p><strong>Phone:</strong> <a href="tel:+88638572677">+886-3-857-2677 #31682</a><span aria-hidden="true"> &nbsp;·&nbsp; </span><strong>Fax:</strong> +886-3-856-0713</p>
+                            <p><strong>E-mail:</strong> <a href="mailto:ss62@gms.tcu.edu.tw">ss62@gms.tcu.edu.tw</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-legal">
+                    <p lang="zh-Hant">© 2024 慈濟大學經營管理學系版權所有。<br>轉載圖文請先徵得同意。</p>
+                    <p>© 2024 TCU. All Rights Reserved.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-socials" aria-label="Social media">
+                    <a class="footer-social-link" href="https://www.facebook.com/groups/662519463776255/" target="_blank" rel="noopener noreferrer" aria-label="Department Facebook group">
+                        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <p class="footer-copyright">Department of Business Management · Tzu Chi University</p>
+            </div>
+        </div>
+    </footer>
+
     <!-- ================= INTERNAL JAVASCRIPT ================= -->
     <script>
-        // 1. Efek Navbar Shadow saat Scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 40) {
-                navbar.style.boxShadow = '0 6px 20px rgba(18, 48, 39, 0.08)';
-                navbar.style.padding = '12px 5%';
-            } else {
-                navbar.style.boxShadow = '0 1px 0 rgba(0, 0, 0, 0.06)';
-                navbar.style.padding = '16px 5%';
-            }
-        });
-
         // ================= 3. LOGIKA SLIDER HERO =================
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
