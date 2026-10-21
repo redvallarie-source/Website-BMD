@@ -384,9 +384,63 @@
         @media (max-width: 992px) {
             .nav-menu { display: none; }
             .hero-curve, .hero-curve-back { width: 100%; border-radius: 0; opacity: 0.92; }
-            .intro-section, .why-container { grid-template-columns: 1fr; gap: 45px; }
+            .intro-section, .why-container { grid-template-columns: minmax(0, 1fr); gap: 45px; }
+            .intro-section > *, .why-container > *, .why-cards { min-width: 0; }
             .prog-grid { grid-template-columns: repeat(2, 1fr); }
             .join-section { flex-direction: column; align-items: flex-start; gap: 30px; }
+        }
+        .nav-toggle { display: none; }
+        @media (max-width: 1100px) {
+            .navbar { gap: 10px; }
+            .brand-container { gap: 9px; }
+            .brand-logo { width: 96px; }
+            .brand-title-zh { font-size: 0.82rem; letter-spacing: 0.04em; }
+            .brand-sub { font-size: 0.56rem; }
+            .nav-toggle { display: grid; flex: 0 0 42px; width: 42px; height: 42px; place-items: center; border: 1px solid rgba(23, 62, 53, 0.22); border-radius: 10px; background: rgba(255, 255, 255, 0.88); color: var(--tc-green); font-size: 1.1rem; cursor: pointer; }
+            .nav-toggle:hover { background: var(--white); }
+            .nav-toggle:focus-visible { outline: 2px solid var(--tc-green); outline-offset: 3px; }
+            .nav-menu, .nav-menu.is-open { display: none !important; position: absolute; top: 100%; right: 0; left: 0; z-index: 1001; flex-direction: column; align-items: stretch; gap: 0; width: 100%; max-height: calc(100vh - 68px); overflow-y: auto; overscroll-behavior: contain; padding: 8px 18px 18px; margin: 0; border-top: 1px solid #e7ede9; background: rgba(255, 255, 255, 0.98); box-shadow: 0 18px 30px rgba(18, 48, 39, 0.16); }
+            .nav-menu.is-open { display: flex !important; }
+            .nav-menu > li { border-bottom: 1px solid #e8eeea; }
+            .nav-menu > li:last-child { border-bottom: 0; }
+            .nav-menu > li > .nav-item { justify-content: space-between; padding: 12px 2px; font-size: 0.98rem; }
+            .nav-menu > li > .nav-item.active::after { display: none; }
+            .nav-menu .dropdown::after { display: none; }
+            .nav-menu .dropdown-menu, .nav-menu > li:last-child .dropdown-menu { position: static; display: block; min-width: 0; padding: 0 0 10px 10px; margin: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; opacity: 1; visibility: visible; transform: none; }
+            .nav-menu .dropdown:hover .dropdown-menu { top: auto; transform: none; }
+            .nav-menu .dropdown-menu li a { padding: 8px 14px; border-left: 2px solid #dce7df; color: #58675f; font-size: 0.9rem; }
+            .nav-menu .dropdown-menu li a:hover { padding-left: 18px; }
+            .nav-right { flex: 0 0 auto; gap: 8px; margin-left: auto; }
+            .lang-pill-btn { flex-shrink: 0; white-space: nowrap; }
+        }
+        @media (max-width: 650px) {
+            .navbar { padding: 10px 4% !important; }
+            .hero-content { width: 100%; min-width: 0; max-width: 100%; padding: 72px 5% 54px; }
+            .hero-title { font-size: clamp(2.35rem, 11vw, 3.2rem); }
+            .hero-subtitle { font-size: 1.3rem; }
+            .intro-section { overflow-x: clip; }
+            .brand-container { flex: 1 1 auto; min-width: 0; }
+            .brand-text { min-width: 0; overflow: hidden; }
+            .brand-logo { width: 76px; }
+            .brand-title-zh { overflow: hidden; font-size: 0.7rem; text-overflow: ellipsis; }
+            .brand-sub { overflow: hidden; font-size: 0.49rem; text-overflow: ellipsis; }
+            .search-icon-btn { display: none; }
+            .lang-pill-btn { padding: 6px 9px; }
+            .why-cards { grid-template-columns: minmax(0, 1fr); }
+            .prog-grid { grid-template-columns: minmax(0, 1fr); }
+            .intro-features { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 14px; }
+            .intro-features .feature-item { min-width: 0; padding: 8px 10px; }
+            .intro-features .feature-item:nth-child(odd) { padding-left: 0; }
+            .intro-features .feature-item:nth-child(even) { padding-right: 0; border-right: 0; }
+        }
+        @media (max-width: 370px) {
+            .navbar { gap: 6px; padding-right: 3% !important; padding-left: 3% !important; }
+            .brand-logo { width: 52px; }
+            .brand-container { gap: 7px; }
+            .brand-sub { display: none; }
+            .brand-title-zh { font-size: 0.63rem; }
+            .lang-pill-btn { padding: 5px 6px; font-size: 0.7rem; letter-spacing: 0; }
+            .nav-toggle { flex-basis: 38px; width: 38px; height: 38px; }
         }
     </style>
 </head>
@@ -403,7 +457,11 @@
                 </div>
             </a>
 
-            <ul class="nav-menu">
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+
+            <ul class="nav-menu" id="primary-navigation">
                 <li><a href="index.html" class="nav-item">Home</a></li>
                 <li class="dropdown">
                     <a href="introduction.html" class="nav-item active">About <i class="fa-solid fa-chevron-down"></i></a>
@@ -685,5 +743,40 @@
 
     </script>
     <script src="translations.js"></script>
+    <script>
+        (() => {
+            const toggle = document.querySelector('.nav-toggle');
+            const menu = document.querySelector('#primary-navigation');
+            const icon = toggle.querySelector('i');
+
+            function closeMenu() {
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', 'Open navigation');
+                menu.classList.remove('is-open');
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+
+            toggle.addEventListener('click', () => {
+                const isOpen = toggle.getAttribute('aria-expanded') !== 'true';
+                toggle.setAttribute('aria-expanded', String(isOpen));
+                toggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+                menu.classList.toggle('is-open', isOpen);
+                icon.classList.toggle('fa-bars', !isOpen);
+                icon.classList.toggle('fa-xmark', isOpen);
+            });
+            menu.addEventListener('click', event => {
+                if (event.target.closest('a')) closeMenu();
+            });
+            document.addEventListener('click', event => {
+                if (!event.target.closest('.navbar')) closeMenu();
+            });
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+                    closeMenu();
+                    toggle.focus();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
